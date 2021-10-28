@@ -1,0 +1,84 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package com.bookstore.dtos;
+
+import java.sql.Date;
+
+/**
+ *
+ * @author Admin
+ */
+public class discountDTO {
+    private String id;
+    private String code;
+    private Date startDate;
+    private Date endDate;
+    private float percent;
+    private String status;
+
+    public discountDTO() {
+    }
+
+    public discountDTO(String id, String code, Date startDate, Date endDate, float percent, String status) {
+        this.id = id;
+        this.code = code;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.percent = percent;
+        this.status = status;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+
+    public float getPercent() {
+        return percent;
+    }
+
+    public void setPercent(float percent) {
+        this.percent = percent;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+    
+    
+}

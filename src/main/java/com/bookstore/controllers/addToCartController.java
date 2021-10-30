@@ -6,7 +6,6 @@
 package com.bookstore.controllers;
 
 import com.bookstore.dtos.dealDetailDTO;
-import dtos.dealDetailDTO;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
@@ -60,10 +59,12 @@ public class addToCartController extends HttpServlet {
                 arr.add(dealDetail);
                 session.setAttribute("CART", arr);
             } else {
-                if (!carts.stream().anyMatch(b -> b.getBookId().equals(bookId))) {
-                    carts.add(dealDetail);
-                    session.removeAttribute("CART");
-                    session.setAttribute("CART", carts);
+                for (dealDetailDTO cart : carts) {
+                    if (!cart.getBookId().equals(bookId)) {
+                        carts.add(dealDetail);
+                        session.removeAttribute("CART");
+                        session.setAttribute("CART", carts);
+                    }
                 }
             }
 

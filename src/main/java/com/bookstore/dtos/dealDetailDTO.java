@@ -6,10 +6,25 @@
 
 package com.bookstore.dtos;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+
 /**
  *
  * @author Admin
  */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "DealDetail", propOrder = {
+    "id",
+    "dealId",
+    "bookId",
+    "bookName",
+    "quantity",
+    "price"
+})
+@XmlRootElement(name = "DealDetail")
 public class dealDetailDTO {
     private String id;
     private String dealId;

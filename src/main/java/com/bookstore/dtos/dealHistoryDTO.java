@@ -2,6 +2,10 @@ package com.bookstore.dtos;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -12,6 +16,16 @@ import java.util.ArrayList;
  *
  * @author Admin
  */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "DealHistory", propOrder = {
+    "id",
+    "fullName",
+    "discountPrice",
+    "totalPrice",
+    "creatDate",
+    "dealList"
+})
+@XmlRootElement(name = "DealHistory")
 public class dealHistoryDTO {
 
     private String id;

@@ -5,10 +5,21 @@
  */
 package com.bookstore.dtos;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+
 /**
  *
  * @author Admin
  */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "Role", propOrder = {
+    "id",
+    "name"
+})
+@XmlRootElement(name = "Role")
 public class roleDTO {
 
     private int id;

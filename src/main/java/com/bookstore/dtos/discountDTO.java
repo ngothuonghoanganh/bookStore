@@ -7,11 +7,25 @@
 package com.bookstore.dtos;
 
 import java.sql.Date;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
 /**
  *
  * @author Admin
  */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "Discount", propOrder = {
+    "id",
+    "code",
+    "startDate",
+    "endDate",
+    "percent",
+    "status"
+})
+@XmlRootElement(name = "Discount")
 public class discountDTO {
     private String id;
     private String code;

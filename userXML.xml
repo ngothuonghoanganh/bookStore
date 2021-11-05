@@ -1,0 +1,27 @@
+<users>
+    <user>
+        <id>1</id>
+        <fullName>nguyen van a</fullName>
+        <username>nguyena</username>
+        <password>123456</password>
+        <address>Q12</address>
+        <email>nguyenvana@gmail.com</email>
+        <role>
+            <id>1</id>
+            <rolename>user</rolename>
+        </role>
+    </user>
+    <user>
+        <id>2</id>
+        <fullName>nguyen van b</fullName>
+        <username>nguyenb</username>
+        <password>123456</password>
+        <address>Quan Tan Binh</address>
+        <email>bnguyenvan@gmail.com</email>
+        <role>
+            <id>2</id>
+            <rolename>admin</rolename>
+        </role>  
+    </user>
+
+</users>

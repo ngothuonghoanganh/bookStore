@@ -7,6 +7,7 @@ package com.bookstore.dtos;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -15,14 +16,16 @@ import javax.xml.bind.annotation.XmlType;
  * @author Admin
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Category", propOrder = {
-    "id",
-    "categoryName"
-})
+//@XmlType(name = "Category", propOrder = {
+//    "id",
+//    "categoryName"
+//})
 @XmlRootElement(name = "Category")
 public class categoryDTO {
 
+    @XmlElement(name = "id")
     private String id;
+    @XmlElement(name = "categoryName")
     private String categoryName;
 
     public categoryDTO() {
@@ -39,11 +42,9 @@ public class categoryDTO {
 
     /**
      * Gets the value of the id property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is {@link String }
+     *
      */
     public String getId() {
         return id;
@@ -51,11 +52,9 @@ public class categoryDTO {
 
     /**
      * Sets the value of the id property.
-     * 
-     * @param id
-     *     allowed object is
-     *     {@link float }
-     *     
+     *
+     * @param id allowed object is {@link float }
+     *
      */
     public void setId(String id) {
         this.id = id;
@@ -63,11 +62,9 @@ public class categoryDTO {
 
     /**
      * Gets the value of the categoryName property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is {@link String }
+     *
      */
     public String getCategoryName() {
         return categoryName;
@@ -75,11 +72,9 @@ public class categoryDTO {
 
     /**
      * Sets the value of the categoryName property.
-     * 
-     * @param categoryName
-     *     allowed object is
-     *     {@link float }
-     *     
+     *
+     * @param categoryName allowed object is {@link float }
+     *
      */
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;

@@ -45,8 +45,8 @@ public class bookDTO {
     private String author;
     @XmlElement(name = "categoryId")
     private String categoryId;
-    @XmlElement(name = "category")
-    private String category;
+    @XmlElement(name = "categoryName")
+    private String categoryName;
     @XmlElement(name = "importDate")
     private Date importDate;
     @XmlElement(name = "quantity")
@@ -61,14 +61,14 @@ public class bookDTO {
     public bookDTO() {
     }
 
-    public bookDTO(String id, String title, String image, String description, String author, String categoryId, String category, Date importDate, int quantity, String status, float price, String name) {
+    public bookDTO(String id, String title, String image, String description, String author, String categoryId, String categoryName, Date importDate, int quantity, String status, float price, String name) {
         this.id = id;
         this.title = title;
         this.image = image;
         this.description = description;
         this.author = author;
         this.categoryId = categoryId;
-        this.category = category;
+        this.categoryName = categoryName;
         this.importDate = importDate;
         this.quantity = quantity;
         this.status = status;
@@ -235,8 +235,8 @@ public class bookDTO {
      * @return possible object is {@link String }
      *
      */
-    public String getCategory() {
-        return category;
+    public String getCategoryName() {
+        return categoryName;
     }
 
     /**
@@ -245,8 +245,8 @@ public class bookDTO {
      * @param category allowed object is {@link String }
      *
      */
-    public void setCategory(String category) {
-        this.category = category;
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 
     /**

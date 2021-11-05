@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.bookstore.dtos;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -16,21 +16,28 @@ import javax.xml.bind.annotation.XmlType;
  * @author Admin
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "DealDetail", propOrder = {
-    "id",
-    "dealId",
-    "bookId",
-    "bookName",
-    "quantity",
-    "price"
-})
+//@XmlType(name = "DealDetail", propOrder = {
+//    "id",
+//    "dealId",
+//    "bookId",
+//    "bookName",
+//    "quantity",
+//    "price"
+//})
 @XmlRootElement(name = "DealDetail")
 public class dealDetailDTO {
+
+    @XmlElement(name = "id")
     private String id;
+    @XmlElement(name = "dealId")
     private String dealId;
+    @XmlElement(name = "bookId")
     private String bookId;
+    @XmlElement(name = "bookName")
     private String bookName;
+    @XmlElement(name = "quantity")
     private int quantity;
+    @XmlElement(name = "price")
     private float price;
 
     public dealDetailDTO() {
@@ -97,6 +104,5 @@ public class dealDetailDTO {
     public String toString() {
         return bookId;
     }
-   
-    
+
 }

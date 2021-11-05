@@ -8,6 +8,7 @@ package com.bookstore.dtos;
 import java.sql.Date;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -16,26 +17,34 @@ import javax.xml.bind.annotation.XmlType;
  * @author Admin
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Deal", propOrder = {
-    "id",
-    "userId",
-    "discountId",
-    "discountCode",
-    "discountPirce",
-    "totalPrice",
-    "createDate",
-    "status"
-})
+//@XmlType(name = "Deal", propOrder = {
+//    "id",
+//    "userId",
+//    "discountId",
+//    "discountCode",
+//    "discountPirce",
+//    "totalPrice",
+//    "createDate",
+//    "status"
+//})
 @XmlRootElement(name = "Deal")
 public class dealDTO {
 
+    @XmlElement(name = "id")
     private String id;
+    @XmlElement(name = "userId")
     private String userId;
+    @XmlElement(name = "discountId")
     private String discountId;
+    @XmlElement(name = "discountCode")
     private String discountCode;
+    @XmlElement(name = "discountPirce")
     private float discountPirce;
+    @XmlElement(name = "totalPrice")
     private float totalPrice;
+    @XmlElement(name = "createDate")
     private Date createDate;
+    @XmlElement(name = "status")
     private String status;
 
     public dealDTO() {
@@ -64,11 +73,9 @@ public class dealDTO {
 
     /**
      * Gets the value of the userId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is {@link String }
+     *
      */
     public String getUserId() {
         return userId;
@@ -76,11 +83,9 @@ public class dealDTO {
 
     /**
      * Sets the value of the name property.
-     * 
-     * @param name
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param name allowed object is {@link String }
+     *
      */
     public void setUserId(String userId) {
         this.userId = userId;
@@ -88,11 +93,9 @@ public class dealDTO {
 
     /**
      * Sets the value of the id property.
-     * 
-     * @param id
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param id allowed object is {@link String }
+     *
      */
     public void setId(String id) {
         this.id = id;
@@ -100,11 +103,9 @@ public class dealDTO {
 
     /**
      * Sets the value of the discountId property.
-     * 
-     * @param discountId
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param discountId allowed object is {@link String }
+     *
      */
     public void setDiscountId(String discountId) {
         this.discountId = discountId;
@@ -112,11 +113,9 @@ public class dealDTO {
 
     /**
      * Sets the value of the discountCode property.
-     * 
-     * @param discountCode
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param discountCode allowed object is {@link String }
+     *
      */
     public void setDiscountCode(String discountCode) {
         this.discountCode = discountCode;
@@ -124,11 +123,9 @@ public class dealDTO {
 
     /**
      * Sets the value of the discountPirce property.
-     * 
-     * @param discountPirce
-     *     allowed object is
-     *     {@link float }
-     *     
+     *
+     * @param discountPirce allowed object is {@link float }
+     *
      */
     public void setDiscountPirce(float discountPirce) {
         this.discountPirce = discountPirce;
@@ -136,11 +133,9 @@ public class dealDTO {
 
     /**
      * Sets the value of the totalPrice property.
-     * 
-     * @param totalPrice
-     *     allowed object is
-     *     {@link float }
-     *     
+     *
+     * @param totalPrice allowed object is {@link float }
+     *
      */
     public void setTotalPrice(float totalPrice) {
         this.totalPrice = totalPrice;
@@ -148,11 +143,9 @@ public class dealDTO {
 
     /**
      * Sets the value of the createDate property.
-     * 
-     * @param createDate
-     *     allowed object is
-     *     {@link Date }
-     *     
+     *
+     * @param createDate allowed object is {@link Date }
+     *
      */
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
@@ -160,11 +153,9 @@ public class dealDTO {
 
     /**
      * Sets the value of the status property.
-     * 
-     * @param status
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param status allowed object is {@link String }
+     *
      */
     public void setStatus(String status) {
         this.status = status;
@@ -172,11 +163,9 @@ public class dealDTO {
 
     /**
      * Gets the value of the ids property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is {@link String }
+     *
      */
     public String getId() {
         return id;
@@ -184,11 +173,9 @@ public class dealDTO {
 
     /**
      * Gets the value of the discountId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is {@link String }
+     *
      */
     public String getDiscountId() {
         return discountId;
@@ -196,11 +183,9 @@ public class dealDTO {
 
     /**
      * Gets the value of the discountCode property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is {@link String }
+     *
      */
     public String getDiscountCode() {
         return discountCode;
@@ -208,11 +193,9 @@ public class dealDTO {
 
     /**
      * Gets the value of the discountPirce property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link float }
-     *     
+     *
+     * @return possible object is {@link float }
+     *
      */
     public float getDiscountPirce() {
         return discountPirce;
@@ -220,11 +203,9 @@ public class dealDTO {
 
     /**
      * Gets the value of the totalPrice property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link float }
-     *     
+     *
+     * @return possible object is {@link float }
+     *
      */
     public float getTotalPrice() {
         return totalPrice;
@@ -232,11 +213,9 @@ public class dealDTO {
 
     /**
      * Gets the value of the createDate property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Date }
-     *     
+     *
+     * @return possible object is {@link Date }
+     *
      */
     public Date getCreateDate() {
         return createDate;
@@ -244,11 +223,9 @@ public class dealDTO {
 
     /**
      * Gets the value of the status property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is {@link String }
+     *
      */
     public String getStatus() {
         return status;

@@ -15,11 +15,11 @@ import javax.xml.bind.annotation.XmlType;
  * @author Admin
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Role", propOrder = {
+@XmlType(name = "role", propOrder = {
     "id",
     "name"
 })
-@XmlRootElement(name = "Role")
+//@XmlRootElement(name = "role")
 public class roleDTO {
 
     private int id;

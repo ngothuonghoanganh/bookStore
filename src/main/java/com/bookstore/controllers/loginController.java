@@ -56,7 +56,7 @@ public class loginController extends HttpServlet {
                 if (user != null) {
                     HttpSession session = request.getSession();
                     session.setAttribute("USER", user);
-                    System.out.println(user.getFullName() + " " + user.getRoleID());
+//                    System.out.println(user.getFullName() + " " + user.getRoleID());
                     url = HOME_PAGE;
                 } else {
                     request.setAttribute("MSG_ERROR", "Invalid username or password");

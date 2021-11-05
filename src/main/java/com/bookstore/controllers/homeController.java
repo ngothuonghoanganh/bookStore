@@ -46,7 +46,7 @@ public class homeController extends HttpServlet {
             userDTO user = (userDTO) session.getAttribute("USER");
             request.setAttribute("user", user);
 
-            System.out.println(user.getFullName() + user.getRoleID());
+//            System.out.println(user.getFullName() + user.getRoleID());
         } catch (Exception e) {
             System.out.println(e);
 

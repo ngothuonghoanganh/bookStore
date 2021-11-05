@@ -36,9 +36,9 @@
         <form action="Login" method="POST" onsubmit="return isreCaptchaChecked()"> 
             Username: <input type="text" name="txtUsername" value="" required=""/><br/><br/>
             Password: <input type="password" name="txtPassword" value="" required=""/><br/>
-            <br/>
+<!--            <br/>
             <div class="g-recaptcha" data-sitekey="6LcTUdYaAAAAANzlMdFL-Tw5aQDNOC42xfXm_fDw" name="recaptcha" data-callback="recaptchaCallback"></div>
-            <br/>
+            <br/>-->
             <input type="submit" value="Login"/>
             <input type="reset" value="Reset"/>
         </form> 

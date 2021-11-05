@@ -62,9 +62,9 @@ public class listDealController extends HttpServlet {
             }
             dealDAO dealDAO = new dealDAO();
             String userId = "";
-            if (!user.getRoleID().equals("admin")) {
-                userId = user.getId();
-            }
+//            if (!user.getRoleID().equals("admin")) {
+//                userId = user.getId();
+//            }
             List<dealList> dealLists = dealDAO.getAllDeal(bookName, createDate, userId);
             ArrayList<dealHistoryDTO> dealHis = new ArrayList<>();
 

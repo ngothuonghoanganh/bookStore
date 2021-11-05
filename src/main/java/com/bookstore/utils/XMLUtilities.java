@@ -5,6 +5,7 @@
  */
 package com.bookstore.utils;
 
+import com.bookstore.dtos.userDTO;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -106,55 +107,55 @@ public class XMLUtilities {
         }
         return "";
     }
-
-    public static boolean insertNodeinStAXusingJAXB(String id, String fullName, String userName,
-            String password, String realPath, String xmlFileName) {
-        InputStream is = null;
-        OutputStream os = null;
-        XMLEventReader reader = null;
-        XMLEventWriter writer = null;
-
-        try {
-            XMLInputFactory xif = XMLInputFactory.newFactory();
-            is = new FileInputStream(realPath + xmlFileName);
-            reader = xif.createXMLEventReader(is);
-
-            XMLOutputFactory xof = XMLOutputFactory.newFactory();
-            os = new FileOutputStream(realPath + xmlFileName + ".new");
-            writer = xof.createXMLEventWriter(os);
-
-            JAXBContext jaxb = JAXBContext.newInstance(UserDTO.class);
-            Unmarshaller unmarshaller = jaxb.createUnmarshaller();
-            Marshaller marshaller = jaxb.createMarshaller();
-            marshaller.setProperty(Marshaller.JAXB_FRAGMENT, true);
-
-            while (reader.hasNext()) {
-                //add equals to
-                if (reader.peek().isEndElement() && reader.peek().asEndElement().getName().getLocalPart().equals()) {
-                    // new User
-                    marshaller.marshal("user", writer);
-                    writer.add(reader.nextEvent());
-                } else {
-                    writer.add(reader.nextEvent());
-                }
-            }
-            writer.flush();
-            writer.close();
-            is.close();
-            os.close();
-            //xoa file cu
-            File file = new File(realPath + xmlFileName);
-            file.delete();
-            file = null;
-            //doi ten file
-            file = new File(realPath + xmlFileName + ".new");
-            file.renameTo(new File(realPath + xmlFileName));
-
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
+//
+//    public static boolean insertNodeinStAXusingJAXB(String id, String fullName, String userName,
+//            String password, String realPath, String xmlFileName) {
+//        InputStream is = null;
+//        OutputStream os = null;
+//        XMLEventReader reader = null;
+//        XMLEventWriter writer = null;
+//
+//        try {
+//            XMLInputFactory xif = XMLInputFactory.newFactory();
+//            is = new FileInputStream(realPath + xmlFileName);
+//            reader = xif.createXMLEventReader(is);
+//
+//            XMLOutputFactory xof = XMLOutputFactory.newFactory();
+//            os = new FileOutputStream(realPath + xmlFileName + ".new");
+//            writer = xof.createXMLEventWriter(os);
+//
+//            JAXBContext jaxb = JAXBContext.newInstance(userDTO.class);
+//            Unmarshaller unmarshaller = jaxb.createUnmarshaller();
+//            Marshaller marshaller = jaxb.createMarshaller();
+//            marshaller.setProperty(Marshaller.JAXB_FRAGMENT, true);
+//
+//            while (reader.hasNext()) {
+//                //add equals to
+//                if (reader.peek().isEndElement() && reader.peek().asEndElement().getName().getLocalPart().equals()) {
+//                    // new User
+//                    marshaller.marshal("user", writer);
+//                    writer.add(reader.nextEvent());
+//                } else {
+//                    writer.add(reader.nextEvent());
+//                }
+//            }
+//            writer.flush();
+//            writer.close();
+//            is.close();
+//            os.close();
+//            //xoa file cu
+//            File file = new File(realPath + xmlFileName);
+//            file.delete();
+//            file = null;
+//            //doi ten file
+//            file = new File(realPath + xmlFileName + ".new");
+//            file.renameTo(new File(realPath + xmlFileName));
+//
+//            return true;
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        return false;
+//    }
 
 }

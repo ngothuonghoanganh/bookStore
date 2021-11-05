@@ -6,12 +6,16 @@
 package com.bookstore.daos;
 
 import com.bookstore.dtos.userDTO;
+import com.bookstore.dtos.userDTOs;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.naming.NamingException;
 import com.bookstore.utils.MyConnection;
+import java.io.File;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Unmarshaller;
 
 /**
  *
@@ -40,27 +44,41 @@ public class userDAO {
     }
 
     public userDTO checkLogin(String username, String password) throws NamingException, SQLException {
-        userDTO user = null;
+//        userDTO user = null;
         try {
-            System.out.println(username + password);
-            conn = MyConnection.getMyConnection();
-            String sql = "SELECT u.id, u.name as fullName, r.name AS roleName FROM dbo.users AS u JOIN dbo.roles AS r ON r.id = u.roleId WHERE u.username = ? COLLATE SQL_Latin1_General_CP1_CS_AS AND u.password = ? COLLATE SQL_Latin1_General_CP1_CS_AS";
-            prStm = conn.prepareStatement(sql);
-            prStm.setString(1, username);
-            prStm.setString(2, password);
-            rs = prStm.executeQuery();
-            if (rs.next()) {
-                user = new userDTO();
-                user.setId(rs.getString("id"));
-                user.setFullName(rs.getString("fullName"));
-                user.setRoleID(rs.getString("roleName"));
+            System.out.println(username);
+            JAXBContext jc = JAXBContext.newInstance(userDTOs.class);
+
+            Unmarshaller u = jc.createUnmarshaller();
+
+            File f = new File("C:\\Users\\Admin\\Desktop\\bookStore\\userXML.xml");
+
+            userDTOs users = (userDTOs) u.unmarshal(f);
+
+            for (userDTO user : users.getUser()) {
+                if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
+                    return user;
+                }
             }
+//            System.out.println(username + password);
+//            conn = MyConnection.getMyConnection();
+//            String sql = "SELECT u.id, u.name as fullName, r.name AS roleName FROM dbo.users AS u JOIN dbo.roles AS r ON r.id = u.roleId WHERE u.username = ? COLLATE SQL_Latin1_General_CP1_CS_AS AND u.password = ? COLLATE SQL_Latin1_General_CP1_CS_AS";
+//            prStm = conn.prepareStatement(sql);
+//            prStm.setString(1, username);
+//            prStm.setString(2, password);
+//            rs = prStm.executeQuery();
+//            if (rs.next()) {
+//                user = new userDTO();
+//                user.setId(rs.getString("id"));
+//                user.setFullName(rs.getString("fullName"));
+//                user.setRoleID(rs.getString("roleName"));
+//            }
         } catch (Exception ex) {
             System.out.println(ex);
         } finally {
             closeConn();
         }
-        return user;
+        return null;
     }
 
     public boolean checkDuplicate(String userID) throws SQLException {

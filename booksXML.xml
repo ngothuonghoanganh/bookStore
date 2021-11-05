@@ -1,0 +1,27 @@
+<books>
+	<id>1</id>
+	<title>hoa vang tren co xanh</title>
+	<image></image>
+	<description>la quyen sach ban chay trong quy nay, sach noi ve nhieu van de thu vi trong cuoc song</description>
+	<author>Ai Phuong</author>
+	<categoryId>1</categoryId>
+	<category>sach chill</category>
+	<importDate>25/3/2021</importDate>
+	<quantity>100</quantity>
+	<status>con hang</status>
+	<price>120000</price>
+	<name>toi thay hoa vang tren co xanh</name>
+
+	<id>2</id>
+	<title>rung la ma</title>
+	<image></image>
+	<description>quyen sach noi ve nhung tinh chat, dac diem cua rung cay la ma</description>
+	<author>Truong Vu</author>
+	<categoryId>2</categoryId>
+	<category>sach giai tri</category>
+	<importDate>15/1/2021</importDate>
+	<quantity>200</quantity>
+	<status>con hang</status>
+	<price>150000</price>
+	<name>rung la ma</name>
+</books>

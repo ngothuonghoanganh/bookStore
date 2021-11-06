@@ -30,7 +30,7 @@ public class userDTO {
 
     @XmlElement(name = "id")
     @XmlJavaTypeAdapter(IDAdapter.class)
-    private String id;
+    private int id;
     @XmlElement(name = "username")
     private String username;
     @XmlElement(name = "password")
@@ -47,7 +47,7 @@ public class userDTO {
     public userDTO() {
     }
 
-    public userDTO(String id, String username, String password, String address, String email, String fullName, roleDTO role) {
+    public userDTO(int id, String username, String password, String address, String email, String fullName, roleDTO role) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -57,7 +57,7 @@ public class userDTO {
         this.role = role;
     }
 
-    public userDTO(String id, String username, String password, String fullName, String status) {
+    public userDTO(int id, String username, String password, String fullName, String status) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -78,11 +78,11 @@ public class userDTO {
         this.username = username;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

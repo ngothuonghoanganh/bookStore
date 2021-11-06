@@ -84,7 +84,7 @@ public class discountDAO {
             rs = prStm.executeQuery();
             while (rs.next()) {
                 discountDTO discount = new discountDTO();
-                discount.setId(rs.getString("id"));
+                discount.setId(rs.getInt("id"));
                 discount.setPercent(rs.getFloat("discountPercent"));
                 discount.setStartDate(rs.getDate("startDate"));
                 discount.setEndDate(rs.getDate("endDate"));
@@ -107,7 +107,7 @@ public class discountDAO {
             prStm.setString(1, code);
             rs = prStm.executeQuery();
             while (rs.next()) {
-                discount.setId(rs.getString("id"));
+                discount.setId(rs.getInt("id"));
                 discount.setPercent(rs.getFloat("discountPercent"));
                 discount.setStartDate(rs.getDate("startDate"));
                 discount.setEndDate(rs.getDate("endDate"));

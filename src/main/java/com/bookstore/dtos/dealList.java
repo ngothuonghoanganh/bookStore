@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "DealList")
 public class dealList {
 
-    private String id;
+    private int id;
     private String fullName;
     private float discountPrice;
     private float totalPrice;
@@ -41,7 +41,7 @@ public class dealList {
     public dealList() {
     }
 
-    public dealList(String id, String fullName, float discountPrice, float totalPrice, float price, int quantity, Date creatDate, String bookName) {
+    public dealList(int id, String fullName, float discountPrice, float totalPrice, float price, int quantity, Date creatDate, String bookName) {
         this.id = id;
         this.fullName = fullName;
         this.discountPrice = discountPrice;
@@ -68,11 +68,11 @@ public class dealList {
         this.creatDate = creatDate;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

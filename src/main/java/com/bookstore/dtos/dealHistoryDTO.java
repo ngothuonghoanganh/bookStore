@@ -28,7 +28,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "DealHistory")
 public class dealHistoryDTO {
 
-    private String id;
+    private int id;
     private String fullName;
     private float discountPrice;
     private float totalPrice;
@@ -38,7 +38,7 @@ public class dealHistoryDTO {
     public dealHistoryDTO() {
     }
 
-    public dealHistoryDTO(String id, String fullName, float discountPrice, float totalPrice, ArrayList<dealList> dealList) {
+    public dealHistoryDTO(int id, String fullName, float discountPrice, float totalPrice, ArrayList<dealList> dealList) {
         this.id = id;
         this.fullName = fullName;
         this.discountPrice = discountPrice;
@@ -54,11 +54,11 @@ public class dealHistoryDTO {
         this.creatDate = creatDate;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

@@ -31,11 +31,11 @@ import javax.xml.bind.annotation.XmlType;
 public class dealDTO {
 
     @XmlElement(name = "id")
-    private String id;
+    private int id;
     @XmlElement(name = "userId")
-    private String userId;
+    private int userId;
     @XmlElement(name = "discountId")
-    private String discountId;
+    private int discountId;
     @XmlElement(name = "discountCode")
     private String discountCode;
     @XmlElement(name = "discountPirce")
@@ -50,7 +50,7 @@ public class dealDTO {
     public dealDTO() {
     }
 
-    public dealDTO(String id, String userId, String discountId, String discountCode, float discountPirce, float totalPrice, Date createDate, String status) {
+    public dealDTO(int id, int userId, int discountId, String discountCode, float discountPirce, float totalPrice, Date createDate, String status) {
         this.id = id;
         this.userId = userId;
         this.discountId = discountId;
@@ -61,7 +61,7 @@ public class dealDTO {
         this.status = status;
     }
 
-    public dealDTO(String id, String userId, String discountId, String discountCode, float discountPirce, float totalPrice, Date createDate) {
+    public dealDTO(int id, int userId, int discountId, String discountCode, float discountPirce, float totalPrice, Date createDate) {
         this.id = id;
         this.userId = userId;
         this.discountId = discountId;
@@ -77,7 +77,7 @@ public class dealDTO {
      * @return possible object is {@link String }
      *
      */
-    public String getUserId() {
+    public int getUserId() {
         return userId;
     }
 
@@ -87,7 +87,7 @@ public class dealDTO {
      * @param name allowed object is {@link String }
      *
      */
-    public void setUserId(String userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 
@@ -97,7 +97,7 @@ public class dealDTO {
      * @param id allowed object is {@link String }
      *
      */
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -107,7 +107,7 @@ public class dealDTO {
      * @param discountId allowed object is {@link String }
      *
      */
-    public void setDiscountId(String discountId) {
+    public void setDiscountId(int discountId) {
         this.discountId = discountId;
     }
 
@@ -167,7 +167,7 @@ public class dealDTO {
      * @return possible object is {@link String }
      *
      */
-    public String getId() {
+    public int getId() {
         return id;
     }
 
@@ -177,7 +177,7 @@ public class dealDTO {
      * @return possible object is {@link String }
      *
      */
-    public String getDiscountId() {
+    public int getDiscountId() {
         return discountId;
     }
 

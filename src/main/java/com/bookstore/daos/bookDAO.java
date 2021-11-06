@@ -6,6 +6,7 @@
 package com.bookstore.daos;
 
 import com.bookstore.dtos.bookDTO;
+import com.bookstore.dtos.bookDTOs;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,6 +15,11 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.naming.NamingException;
 import com.bookstore.utils.MyConnection;
+import java.io.File;
+import java.util.Collections;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
 
 /**
  *
@@ -40,76 +46,149 @@ public class bookDAO {
         } catch (Exception e) {
         }
     }
-
-    public void insertNew(bookDTO book) throws SQLException, ClassNotFoundException, NamingException {
+    
+    public void insertNewBook(bookDTO book) throws SQLException, ClassNotFoundException, NamingException {
         try {
-            conn = MyConnection.getMyConnection();
-            if (conn != null) {
-                String sql = "INSERT INTO books("
-                        + "title, "
-                        + "image, "
-                        + "description,"
-                        + "author,"
-                        + "categoryId,"
-                        + "importDate,"
-                        + "quantity,"
-                        + "status,"
-                        + "price,"
-                        + "name) "
-                        + " VALUES(?,?,?,?,?,?,?,?,?,?)"; // Default roleID = 3 <--> Employee
-                prStm = conn.prepareStatement(sql);
-                prStm.setNString(1, book.getTitle());
-                prStm.setString(2, book.getImage());
-                prStm.setNString(3, book.getDescription());
-                prStm.setNString(4, book.getAuthor());
-                prStm.setInt(5, book.getCategoryId());
-                prStm.setDate(6, book.getImportDate());
-                prStm.setInt(7, book.getQuantity());
-                prStm.setString(8, book.getStatus());
-                prStm.setFloat(9, book.getPrice());
-                prStm.setNString(10, book.getName());
-                prStm.executeUpdate();
+            List<Integer> intValues = new ArrayList<>();
+
+           JAXBContext jc = JAXBContext.newInstance(bookDTOs.class);
+            Marshaller mar = jc.createMarshaller();
+            File f = new File("C:\\Users\\Admin\\Desktop\\bookStore\\BooksXML.xml");
+
+            Unmarshaller u = jc.createUnmarshaller();
+            bookDTOs Books = (bookDTOs) u.unmarshal(f);
+            
+            for (bookDTO Book : Books.getListBooks()) {
+                intValues.add(Book.getId());
             }
-        } finally {
+            
+            book.setId(Collections.max(intValues)+1);
+            
+            Books.getListBooks().add(book);
+            
+            mar.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+//            mar.setAdapter(new IDAdapter());
+            mar.marshal(Books,f);
+        }catch (Exception e) {
+                System.out.println(e);
+        }  finally {
             closeConn();
         }
     }
-
-    public List<bookDTO> getAllBook(String bookName, String categoryName, float minPrice, float maxPrice, int paging, int pageSize) throws SQLException, NamingException {
-        List<bookDTO> listResouces = new ArrayList<>();
+    public List<bookDTO> getAllBook() throws SQLException, NamingException {
+        bookDTOs listBook = null;
         try {
-            conn = MyConnection.getMyConnection();
-            String sql = "SELECT rs.id as id,"
-                    + "rs.name as name,"
-                    + "rs.importDate as importDate,"
-                    + "rs.quantity as quantity, "
-                    + "rs.price as price,"
-                    + "rs.image as image,"
-                    + "rs.title as title,"
-                    + "rs.author as author,"
-                    + "rs.description as description,"
-                    + "rs.status as status,"
-                    + "ct.id as categoryId,"
-                    + "ct.categoryName as categoryName FROM books rs join categories ct on rs.categoryId = ct.id"
-                    + " Where rs.name like ? and ct.categoryName like ? and price BETWEEN ? and ? and rs.status='active' ORDER BY rs.name"
-                    + " OFFSET ? ROWS\n"
-                    + "FETCH NEXT ? ROWS ONLY OPTION (RECOMPILE)";
-            prStm = conn.prepareStatement(sql);
-            prStm.setString(1, "%" + bookName + "%");
-            prStm.setString(2, "%" + categoryName + "%");
-            prStm.setFloat(3, minPrice);
-            prStm.setFloat(4, maxPrice);
-            prStm.setInt(5, paging);
-            prStm.setInt(6, pageSize);
-            rs = prStm.executeQuery();
-            while (rs.next()) {
-                listResouces.add(new bookDTO(rs.getInt("id"), rs.getString("title"), rs.getString("image"), rs.getString("description"), rs.getString("author"), rs.getInt("categoryId"), rs.getString("categoryName"), rs.getDate("importDate"), rs.getInt("quantity"), rs.getString("status"), rs.getFloat("price"), rs.getString("name")));
-            }
+//             System.out.println(username);
+            JAXBContext jc = JAXBContext.newInstance(bookDTOs.class);
+
+            Unmarshaller u = jc.createUnmarshaller();
+
+            File f = new File("C:\\Users\\Admin\\Desktop\\bookStore\\BooksXML.xml");
+
+            listBook = (bookDTOs) u.unmarshal(f);
+
+        } catch (Exception e) {
+                System.out.println(e);
         } finally {
             closeConn();
         }
-        return listResouces;
+        return listBook.getListBooks();
     }
+    public bookDTO getOneBook(int bookID) throws NamingException, SQLException {
+        try {
+            System.out.println(bookID);
+            JAXBContext jc = JAXBContext.newInstance(bookDTOs.class);
+
+            Unmarshaller u = jc.createUnmarshaller();
+
+            File f = new File("C:\\Users\\Admin\\Desktop\\bookStore\\BooksXML.xml");
+
+            bookDTOs books = (bookDTOs) u.unmarshal(f);
+
+            for (bookDTO book : books.getListBooks()) {
+                if(book.getId() == bookID){
+                    return book;
+                }
+//                        if (book.getId() = bookID) {
+//                    return book;
+//                }
+            }
+        } catch (Exception ex) {
+            System.out.println(ex);
+        } finally {
+            closeConn();
+        }
+        return null;
+    }
+//    public void insertNew(bookDTO book) throws SQLException, ClassNotFoundException, NamingException {
+//        try {
+//            conn = MyConnection.getMyConnection();
+//            if (conn != null) {
+//                String sql = "INSERT INTO books("
+//                        + "title, "
+//                        + "image, "
+//                        + "description,"
+//                        + "author,"
+//                        + "categoryId,"
+//                        + "importDate,"
+//                        + "quantity,"
+//                        + "status,"
+//                        + "price,"
+//                        + "name) "
+//                        + " VALUES(?,?,?,?,?,?,?,?,?,?)"; // Default roleID = 3 <--> Employee
+//                prStm = conn.prepareStatement(sql);
+//                prStm.setNString(1, book.getTitle());
+//                prStm.setString(2, book.getImage());
+//                prStm.setNString(3, book.getDescription());
+//                prStm.setNString(4, book.getAuthor());
+//                prStm.setInt(5, book.getCategoryId());
+//                prStm.setDate(6, book.getImportDate());
+//                prStm.setInt(7, book.getQuantity());
+//                prStm.setString(8, book.getStatus());
+//                prStm.setFloat(9, book.getPrice());
+//                prStm.setNString(10, book.getName());
+//                prStm.executeUpdate();
+//            }
+//        } finally {
+//            closeConn();
+//        }
+//    }
+
+//    public List<bookDTO> getAllBook(String bookName, String categoryName, float minPrice, float maxPrice, int paging, int pageSize) throws SQLException, NamingException {
+//        List<bookDTO> listResouces = new ArrayList<>();
+//        try {
+//            conn = MyConnection.getMyConnection();
+//            String sql = "SELECT rs.id as id,"
+//                    + "rs.name as name,"
+//                    + "rs.importDate as importDate,"
+//                    + "rs.quantity as quantity, "
+//                    + "rs.price as price,"
+//                    + "rs.image as image,"
+//                    + "rs.title as title,"
+//                    + "rs.author as author,"
+//                    + "rs.description as description,"
+//                    + "rs.status as status,"
+//                    + "ct.id as categoryId,"
+//                    + "ct.categoryName as categoryName FROM books rs join categories ct on rs.categoryId = ct.id"
+//                    + " Where rs.name like ? and ct.categoryName like ? and price BETWEEN ? and ? and rs.status='active' ORDER BY rs.name"
+//                    + " OFFSET ? ROWS\n"
+//                    + "FETCH NEXT ? ROWS ONLY OPTION (RECOMPILE)";
+//            prStm = conn.prepareStatement(sql);
+//            prStm.setString(1, "%" + bookName + "%");
+//            prStm.setString(2, "%" + categoryName + "%");
+//            prStm.setFloat(3, minPrice);
+//            prStm.setFloat(4, maxPrice);
+//            prStm.setInt(5, paging);
+//            prStm.setInt(6, pageSize);
+//            rs = prStm.executeQuery();
+//            while (rs.next()) {
+//                listResouces.add(new bookDTO(rs.getInt("id"), rs.getString("title"), rs.getString("image"), rs.getString("description"), rs.getString("author"), rs.getInt("categoryId"), rs.getString("categoryName"), rs.getDate("importDate"), rs.getInt("quantity"), rs.getString("status"), rs.getFloat("price"), rs.getString("name")));
+//            }
+//        } finally {
+//            closeConn();
+//        }
+//        return listResouces;
+//    }
 
     public int countBook(String bookname, String categoryName, float minPrice, float maxPrice) throws SQLException, NamingException {
         int count = 0;

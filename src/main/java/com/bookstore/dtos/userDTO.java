@@ -5,9 +5,11 @@
  */
 package com.bookstore.dtos;
 
+import com.bookstore.utils.IDAdapter;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 /**
  *
@@ -27,7 +29,8 @@ import javax.xml.bind.annotation.XmlElement;
 public class userDTO {
 
     @XmlElement(name = "id")
-    private String id;
+    @XmlJavaTypeAdapter(IDAdapter.class)
+    private int id;
     @XmlElement(name = "username")
     private String username;
     @XmlElement(name = "password")
@@ -44,7 +47,7 @@ public class userDTO {
     public userDTO() {
     }
 
-    public userDTO(String id, String username, String password, String address, String email, String fullName, roleDTO role) {
+    public userDTO(int id, String username, String password, String address, String email, String fullName, roleDTO role) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -54,7 +57,7 @@ public class userDTO {
         this.role = role;
     }
 
-    public userDTO(String id, String username, String password, String fullName, String status) {
+    public userDTO(int id, String username, String password, String fullName, String status) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -75,11 +78,11 @@ public class userDTO {
         this.username = username;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

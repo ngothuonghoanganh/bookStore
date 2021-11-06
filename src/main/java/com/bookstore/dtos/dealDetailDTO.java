@@ -28,11 +28,11 @@ import javax.xml.bind.annotation.XmlType;
 public class dealDetailDTO {
 
     @XmlElement(name = "id")
-    private String id;
+    private int id;
     @XmlElement(name = "dealId")
-    private String dealId;
+    private int dealId;
     @XmlElement(name = "bookId")
-    private String bookId;
+    private int bookId;
     @XmlElement(name = "bookName")
     private String bookName;
     @XmlElement(name = "quantity")
@@ -43,7 +43,7 @@ public class dealDetailDTO {
     public dealDetailDTO() {
     }
 
-    public dealDetailDTO(String id, String dealId, String bookId, String bookName, int quantity, float price) {
+    public dealDetailDTO(int id, int dealId, int bookId, String bookName, int quantity, float price) {
         this.id = id;
         this.dealId = dealId;
         this.bookId = bookId;
@@ -52,27 +52,27 @@ public class dealDetailDTO {
         this.price = price;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public String getDealId() {
+    public int getDealId() {
         return dealId;
     }
 
-    public void setDealId(String dealId) {
+    public void setDealId(int dealId) {
         this.dealId = dealId;
     }
 
-    public String getBookId() {
+    public int getBookId() {
         return bookId;
     }
 
-    public void setBookId(String bookId) {
+    public void setBookId(int bookId) {
         this.bookId = bookId;
     }
 
@@ -102,7 +102,7 @@ public class dealDetailDTO {
 
     @Override
     public String toString() {
-        return bookId;
+        return Integer.toString(bookId);
     }
 
 }

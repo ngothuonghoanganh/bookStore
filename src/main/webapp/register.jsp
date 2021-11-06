@@ -17,7 +17,7 @@
         <h1>Sign In</h1>
 
 
-        <form action="register" method="POST">
+        <form action="Register" method="POST">
 
             Full Name <input type="text" name="fullName" required="true" pattern="^[A-Za-z0-9 ]+$" title="Oly use english and not special character" required/><br/>
             <br>

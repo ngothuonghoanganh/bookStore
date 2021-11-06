@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlType;
 })
 @XmlRootElement(name = "Discount")
 public class discountDTO {
-    private String id;
+    private int id;
     private String code;
     private Date startDate;
     private Date endDate;
@@ -37,7 +37,7 @@ public class discountDTO {
     public discountDTO() {
     }
 
-    public discountDTO(String id, String code, Date startDate, Date endDate, float percent, String status) {
+    public discountDTO(int id, String code, Date startDate, Date endDate, float percent, String status) {
         this.id = id;
         this.code = code;
         this.startDate = startDate;
@@ -46,11 +46,11 @@ public class discountDTO {
         this.status = status;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

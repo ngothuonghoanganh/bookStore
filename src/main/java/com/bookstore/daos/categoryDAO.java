@@ -66,7 +66,7 @@ public class categoryDAO {
             rs = prStm.executeQuery();
             while(rs.next()){
                 categoryDTO cate = new categoryDTO();
-                cate.setId(rs.getString("id"));
+                cate.setId(rs.getInt("id"));
                 cate.setCategoryName(rs.getString("categoryName"));
                 listCate.add(cate);
             }

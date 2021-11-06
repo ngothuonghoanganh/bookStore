@@ -7,6 +7,7 @@ package com.bookstore.dtos;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -15,21 +16,23 @@ import javax.xml.bind.annotation.XmlType;
  * @author Admin
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "role", propOrder = {
-    "id",
-    "name"
-})
+//@XmlType(name = "role", propOrder = {
+//    "id",
+//    "roleName"
+//})
 //@XmlRootElement(name = "role")
 public class roleDTO {
 
+    @XmlElement(name = "id")
     private int id;
-    private String name;
+    @XmlElement(name = "roleName")
+    private String roleName;
 
     public roleDTO() {
     }
 
-    public roleDTO(String name) {
-        this.name = name;
+    public roleDTO(String roleName) {
+        this.roleName = roleName;
     }
 
     public int getId() {
@@ -40,11 +43,12 @@ public class roleDTO {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getRoleName() {
+        return roleName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
     }
+
 }

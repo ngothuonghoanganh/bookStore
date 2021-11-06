@@ -34,7 +34,7 @@ import javax.xml.bind.annotation.XmlType;
 public class bookDTO {
 
     @XmlElement(name = "id")
-    private String id;
+    private int id;
     @XmlElement(name = "title")
     private String title;
     @XmlElement(name = "image")
@@ -44,7 +44,7 @@ public class bookDTO {
     @XmlElement(name = "author")
     private String author;
     @XmlElement(name = "categoryId")
-    private String categoryId;
+    private int categoryId;
     @XmlElement(name = "categoryName")
     private String categoryName;
     @XmlElement(name = "importDate")
@@ -61,7 +61,7 @@ public class bookDTO {
     public bookDTO() {
     }
 
-    public bookDTO(String id, String title, String image, String description, String author, String categoryId, String categoryName, Date importDate, int quantity, String status, float price, String name) {
+    public bookDTO(int id, String title, String image, String description, String author, int categoryId, String categoryName, Date importDate, int quantity, String status, float price, String name) {
         this.id = id;
         this.title = title;
         this.image = image;
@@ -76,7 +76,7 @@ public class bookDTO {
         this.name = name;
     }
 
-    public bookDTO(String title, String image, String description, String author, String categoryId, Date importDate, int quantity, String status, float price, String name) {
+    public bookDTO(String title, String image, String description, String author, int categoryId, Date importDate, int quantity, String status, float price, String name) {
         this.title = title;
         this.image = image;
         this.description = description;
@@ -115,7 +115,7 @@ public class bookDTO {
      * @return possible object is {@link String }
      *
      */
-    public String getId() {
+    public int getId() {
         return id;
     }
 
@@ -125,7 +125,7 @@ public class bookDTO {
      * @param id allowed object is {@link String }
      *
      */
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -215,7 +215,7 @@ public class bookDTO {
      * @return possible object is {@link String }
      *
      */
-    public String getCategoryId() {
+    public int getCategoryId() {
         return categoryId;
     }
 
@@ -225,7 +225,7 @@ public class bookDTO {
      * @param categoryId allowed object is {@link String }
      *
      */
-    public void setCategoryId(String categoryId) {
+    public void setCategoryId(int categoryId) {
         this.categoryId = categoryId;
     }
 

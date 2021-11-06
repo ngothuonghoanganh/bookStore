@@ -8,6 +8,7 @@ package com.bookstore.controllers;
 import java.io.IOException;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,6 +18,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Admin
  */
+@WebServlet(name = "Logout", urlPatterns = {"/Logout"})
 public class logout extends HttpServlet {
 
     private static final String LOGIN_PAGE = "login.jsp";
@@ -43,7 +45,7 @@ public class logout extends HttpServlet {
             System.out.println(e);
 
         } finally {
-            response.sendRedirect("login");
+            response.sendRedirect("Login");
         }
     }
 

@@ -62,7 +62,7 @@ public class bookDAO {
                 prStm.setString(2, book.getImage());
                 prStm.setNString(3, book.getDescription());
                 prStm.setNString(4, book.getAuthor());
-                prStm.setString(5, book.getCategoryId());
+                prStm.setInt(5, book.getCategoryId());
                 prStm.setDate(6, book.getImportDate());
                 prStm.setInt(7, book.getQuantity());
                 prStm.setString(8, book.getStatus());
@@ -103,7 +103,7 @@ public class bookDAO {
             prStm.setInt(6, pageSize);
             rs = prStm.executeQuery();
             while (rs.next()) {
-                listResouces.add(new bookDTO(rs.getString("id"), rs.getString("title"), rs.getString("image"), rs.getString("description"), rs.getString("author"), rs.getString("categoryId"), rs.getString("categoryName"), rs.getDate("importDate"), rs.getInt("quantity"), rs.getString("status"), rs.getFloat("price"), rs.getString("name")));
+                listResouces.add(new bookDTO(rs.getInt("id"), rs.getString("title"), rs.getString("image"), rs.getString("description"), rs.getString("author"), rs.getInt("categoryId"), rs.getString("categoryName"), rs.getDate("importDate"), rs.getInt("quantity"), rs.getString("status"), rs.getFloat("price"), rs.getString("name")));
             }
         } finally {
             closeConn();
@@ -142,7 +142,7 @@ public class bookDAO {
             prStm.setString(1, bookId);
             rs = prStm.executeQuery();
             while (rs.next()) {
-                book.setId(rs.getString("id"));
+                book.setId(rs.getInt("id"));
                 book.setName(rs.getString("name"));
                 book.setTitle(rs.getString("Title"));
                 book.setImage(rs.getString("image"));
@@ -167,9 +167,9 @@ public class bookDAO {
             prStm.setNString(4, book.getAuthor());
             prStm.setDate(5, book.getImportDate());
             prStm.setInt(6, book.getQuantity());
-            prStm.setString(7, book.getCategoryId());
+            prStm.setInt(7, book.getCategoryId());
             prStm.setString(8, book.getName());
-            prStm.setString(9, book.getId());
+            prStm.setInt(9, book.getId());
             int rowEffect = prStm.executeUpdate();
             if (rowEffect > 0) {
                 return true;
@@ -186,7 +186,7 @@ public class bookDAO {
             String sql = "UPDATE books SET status = ? WHERE id = ? AND status ='active'";
             prStm = conn.prepareStatement(sql);
             prStm.setString(1, book.getStatus());
-            prStm.setString(2, book.getId());
+            prStm.setInt(2, book.getId());
 
             int rowEffect = prStm.executeUpdate();
             if (rowEffect > 0) {

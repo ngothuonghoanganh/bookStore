@@ -46,8 +46,8 @@ public class dealDAO {
             String sqlOrder = "INSERT INTO deals (userId, discountId, discountPrice, totalPrice, status)"
                     + "VALUES(?,?,?,?,?)";
             prStm = conn.prepareStatement(sqlOrder, new String[]{"id"});
-            prStm.setString(1, deals.getUserId());
-            prStm.setString(2, deals.getDiscountId());
+            prStm.setInt(1, deals.getUserId());
+            prStm.setInt(2, deals.getDiscountId());
             prStm.setFloat(3, deals.getDiscountPirce());
             prStm.setFloat(4, deals.getTotalPrice());
             prStm.setString(5, "active");
@@ -70,9 +70,9 @@ public class dealDAO {
             String sqlOrderDetail = "INSERT INTO dbo.dealDetail ( dealId, bookId, quantity, price ) VALUES  ( (select top 1 id from deals where userId = ? and DateInserted = (select max(DateInserted) from deals where userId = ?)), ?, ?, ?)";
             for (dealDetailDTO book : cart) {
                 prStm = conn.prepareStatement(sqlOrderDetail);
-                prStm.setString(1, deals.getUserId());
-                prStm.setString(2, deals.getUserId());
-                prStm.setString(3, book.getBookId());
+                prStm.setInt(1, deals.getUserId());
+                prStm.setInt(2, deals.getUserId());
+                prStm.setInt(3, book.getBookId());
                 prStm.setInt(4, book.getQuantity());
                 prStm.setFloat(5, book.getPrice());
                 rowEffect = prStm.executeUpdate();
@@ -85,7 +85,7 @@ public class dealDAO {
                 //delete discount 
                 String sqlUpdateStatusDiscount = "Update discounts set status = 'used' where id = ?";
                 prStm = conn.prepareStatement(sqlUpdateStatusDiscount);
-                prStm.setString(1, deals.getDiscountId());
+                prStm.setInt(1, deals.getDiscountId());
                 rowEffect = prStm.executeUpdate();
                 if (rowEffect == 0) {
                     conn.rollback();
@@ -97,7 +97,7 @@ public class dealDAO {
             for (dealDetailDTO book : cart) {
                 prStm = conn.prepareStatement(sqlDecreaseQuantity);
                 prStm.setInt(1, book.getQuantity());
-                prStm.setString(2, book.getBookId());
+                prStm.setInt(2, book.getBookId());
                 rowEffect = prStm.executeUpdate();
                 if (rowEffect == 0) {
                     conn.rollback();
@@ -137,7 +137,7 @@ public class dealDAO {
 //            prStm.setInt(4, pageSize);
             rs = prStm.executeQuery();
             while (rs.next()) {
-                listResouces.add(new dealList(rs.getString("id"), rs.getString("fullName"), rs.getFloat("discountPrice"), rs.getFloat("totalPrice"), rs.getFloat("price"), rs.getInt("quantity"), rs.getDate("createDate"), rs.getString("BookName")));
+                listResouces.add(new dealList(rs.getInt("id"), rs.getString("fullName"), rs.getFloat("discountPrice"), rs.getFloat("totalPrice"), rs.getFloat("price"), rs.getInt("quantity"), rs.getDate("createDate"), rs.getString("BookName")));
             }
         } finally {
             closeConn();

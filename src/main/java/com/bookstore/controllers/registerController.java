@@ -72,7 +72,7 @@ public class registerController extends HttpServlet {
             request.setAttribute("ERROR", "Some thing was wrong");
             url = ERROR_PAGE;
         } finally {
-            response.sendRedirect("login");
+            response.sendRedirect("Login");
         }
     }
 

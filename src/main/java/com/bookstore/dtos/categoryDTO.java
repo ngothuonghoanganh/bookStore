@@ -24,14 +24,14 @@ import javax.xml.bind.annotation.XmlType;
 public class categoryDTO {
 
     @XmlElement(name = "id")
-    private String id;
+    private int id;
     @XmlElement(name = "categoryName")
     private String categoryName;
 
     public categoryDTO() {
     }
 
-    public categoryDTO(String id, String categoryName) {
+    public categoryDTO(int id, String categoryName) {
         this.id = id;
         this.categoryName = categoryName;
     }
@@ -46,7 +46,7 @@ public class categoryDTO {
      * @return possible object is {@link String }
      *
      */
-    public String getId() {
+    public int getId() {
         return id;
     }
 
@@ -56,7 +56,7 @@ public class categoryDTO {
      * @param id allowed object is {@link float }
      *
      */
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

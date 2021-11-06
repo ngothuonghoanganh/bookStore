@@ -8,7 +8,7 @@
         <email>nguyenvana@gmail.com</email>
         <role>
             <id>1</id>
-            <rolename>user</rolename>
+            <roleName>user</roleName>
         </role>
     </user>
     <user>
@@ -20,8 +20,7 @@
         <email>bnguyenvan@gmail.com</email>
         <role>
             <id>2</id>
-            <rolename>admin</rolename>
+            <roleName>admin</roleName>
         </role>  
     </user>
-
 </users>

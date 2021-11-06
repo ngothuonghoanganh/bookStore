@@ -5,9 +5,11 @@
  */
 package com.bookstore.dtos;
 
+import com.bookstore.utils.IDAdapter;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 /**
  *
@@ -27,6 +29,7 @@ import javax.xml.bind.annotation.XmlElement;
 public class userDTO {
 
     @XmlElement(name = "id")
+    @XmlJavaTypeAdapter(IDAdapter.class)
     private String id;
     @XmlElement(name = "username")
     private String username;

@@ -15,6 +15,8 @@ import javax.naming.NamingException;
 import com.bookstore.utils.MyConnection;
 import java.io.File;
 import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
 /**
@@ -60,19 +62,6 @@ public class userDAO {
                     return user;
                 }
             }
-//            System.out.println(username + password);
-//            conn = MyConnection.getMyConnection();
-//            String sql = "SELECT u.id, u.name as fullName, r.name AS roleName FROM dbo.users AS u JOIN dbo.roles AS r ON r.id = u.roleId WHERE u.username = ? COLLATE SQL_Latin1_General_CP1_CS_AS AND u.password = ? COLLATE SQL_Latin1_General_CP1_CS_AS";
-//            prStm = conn.prepareStatement(sql);
-//            prStm.setString(1, username);
-//            prStm.setString(2, password);
-//            rs = prStm.executeQuery();
-//            if (rs.next()) {
-//                user = new userDTO();
-//                user.setId(rs.getString("id"));
-//                user.setFullName(rs.getString("fullName"));
-//                user.setRoleID(rs.getString("roleName"));
-//            }
         } catch (Exception ex) {
             System.out.println(ex);
         } finally {
@@ -104,24 +93,17 @@ public class userDAO {
         return check;
     }
 
-    public void insertNew(userDTO user) throws SQLException, ClassNotFoundException, NamingException {
+    public void insertNew(userDTO user) throws SQLException, ClassNotFoundException, NamingException, JAXBException {
 
         try {
-            conn = MyConnection.getMyConnection();
-            if (conn != null) {
-                String sql = "INSERT INTO users("
-                        + "userName, password,"
-                        + " name, roleId) "
-                        + " VALUES(?,?,?,(select id from roles where name = 'user'))"; // Default roleID = 3 <--> Employee
-                prStm = conn.prepareStatement(sql);
-                prStm.setString(1, user.getUsername());
-                prStm.setNString(2, user.getPassword());
-                prStm.setNString(3, user.getFullName());
+            JAXBContext jc = JAXBContext.newInstance(userDTOs.class);
+            Marshaller mar = jc.createMarshaller();
+            mar.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+            mar.marshal(user, new File("C:\\Users\\Admin\\Desktop\\bookStore\\userXML.xml"));
+//            File f = new File("C:\\Users\\Admin\\Desktop\\bookStore\\userXML.xml");
 
-                prStm.executeUpdate();
-            }
-        } finally {
-            closeConn();
+        } catch (Exception e) {
+            System.out.println(e);
         }
     }
 }

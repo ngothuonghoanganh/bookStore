@@ -68,7 +68,7 @@ public class loginController extends HttpServlet {
             url = ERROR_PAGE;
         } finally {
             if (url.equals(HOME_PAGE)) {
-                response.sendRedirect("home");
+                response.sendRedirect("Home");
             } else {
                 RequestDispatcher rd = request.getRequestDispatcher(url);
                 rd.forward(request, response);

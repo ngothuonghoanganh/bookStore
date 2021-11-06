@@ -20,22 +20,22 @@
     <body>
         <nav class="navbar fixed-top navbar-light bg-light">
             <a class="navbar-brand" href="home">Home</a>
-            <c:if test = "${!user.role.id.equals('admin')}">
+            <c:if test = "${!user.role.roleName.equals('admin')}">
                 <a class="navbar-brand" href="listBookToBuy">Book</a>
             </c:if>
 
             <a class="navbar-brand" href="listDeal">Deal</a>
             <a class="navbar-brand" href="discount">Discount</a>
 
-            <c:if test = "${user.role.id.equals('admin')}">
+            <c:if test = "${user.role.roleName.equals('admin')}">
                 <a class="navbar-brand" href="category">Category</a>
                 <a class="navbar-brand" href="book">Book</a>
             </c:if>
-            <a class="navbar-brand" href="logout">Logout</a>
+            <a class="navbar-brand" href="Logout">Logout</a>
 
         </nav>
         <%--<c:forEach var="user" items="${user}">--%> 
-        <h1 style="margin-top: 100px">${user.fullName} (${user.role.name})</h1>
+        <h1 style="margin-top: 100px">${user.fullName} (${user.role.roleName})</h1>
         <%--</c:forEach>--%>
 
     </body>

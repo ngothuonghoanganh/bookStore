@@ -1,0 +1,23 @@
+<deals>
+	<deal>
+		<id>1</id>
+		<userId>1</userId>
+		<discountId>20</discountId>
+		<discountCode>VuiVeMuaSach</discountCode>
+		<discountPrice></discountPrice>
+		<totalPrice></totalPrice>
+		<createDate>13/6/2021</createDate>
+		<status>con hang</status>
+	<deal>
+
+	<deal>
+		<id>2</id>
+		<userId>1</userId>
+		<discountId>5</discountId>
+		<discountCode>KhuyenMai</discountCode>
+		<discountPrice></discountPrice>
+		<totalPrice></totalPrice>
+		<createDate>20/6/2021</createDate>
+		<status>con hang</status>
+	<deal>
+</deals>

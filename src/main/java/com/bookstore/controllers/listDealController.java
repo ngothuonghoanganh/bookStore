@@ -70,15 +70,15 @@ public class listDealController extends HttpServlet {
 
             for (dealList dealList : dealLists) {
                 for (dealHistoryDTO dealHi : dealHis) {
-                    if (dealHi.getId().equals(dealList.getId())) {
-                        dealHistoryDTO dealH = new dealHistoryDTO();
-                        dealH.setId(dealList.getId());
-                        dealH.setFullName(dealList.getFullName());
-                        dealH.setDiscountPrice(dealList.getDiscountPrice());
-                        dealH.setTotalPrice(dealList.getTotalPrice());
-                        dealH.setCreatDate(dealList.getCreatDate());
-                        dealHis.add(dealH);
-                    }
+//                    if (dealHi.getId().equals(dealList.getId())) {
+//                        dealHistoryDTO dealH = new dealHistoryDTO();
+//                        dealH.setId(dealList.getId());
+//                        dealH.setFullName(dealList.getFullName());
+//                        dealH.setDiscountPrice(dealList.getDiscountPrice());
+//                        dealH.setTotalPrice(dealList.getTotalPrice());
+//                        dealH.setCreatDate(dealList.getCreatDate());
+//                        dealHis.add(dealH);
+//                    }
                 }
             }
 
@@ -96,17 +96,17 @@ public class listDealController extends HttpServlet {
             for (dealHistoryDTO dealHistory : dealHis) {
                 ArrayList<dealList> dealListG = new ArrayList<>();
                 for (dealList dealList : dealLists) {
-                    if (dealHistory.getId().equals(dealList.getId())) {
-                        dealList dealH = new dealList();
-                        dealH.setId(dealList.getId());
-                        dealH.setFullName(dealList.getFullName());
-                        dealH.setDiscountPrice(dealList.getDiscountPrice());
-                        dealH.setTotalPrice(dealList.getTotalPrice());
-                        dealH.setPrice(dealList.getPrice());
-                        dealH.setQuantity(dealList.getQuantity());
-                        dealH.setBookName(dealList.getBookName());
-                        dealListG.add(dealH);
-                    }
+//                    if (dealHistory.getId().equals(dealList.getId())) {
+//                        dealList dealH = new dealList();
+//                        dealH.setId(dealList.getId());
+//                        dealH.setFullName(dealList.getFullName());
+//                        dealH.setDiscountPrice(dealList.getDiscountPrice());
+//                        dealH.setTotalPrice(dealList.getTotalPrice());
+//                        dealH.setPrice(dealList.getPrice());
+//                        dealH.setQuantity(dealList.getQuantity());
+//                        dealH.setBookName(dealList.getBookName());
+//                        dealListG.add(dealH);
+//                    }
                 }
 //                dealLists.forEach(dealList -> {
 //                    if (dealHistory.getId().equals(dealList.getId())) {

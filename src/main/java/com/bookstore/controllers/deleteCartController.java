@@ -42,9 +42,9 @@ public class deleteCartController extends HttpServlet {
             ArrayList<dealDetailDTO> carts = (ArrayList<dealDetailDTO>) session.getAttribute("CART");
 
             for (int i = 0; i < carts.size(); i++) {
-                if (carts.get(i).getBookId().equals(bookId)) {
-                    carts.remove(i);
-                }
+//                if (carts.get(i).getBookId().equals(bookId)) {
+//                    carts.remove(i);
+//                }
             }
 
         } catch (Exception e) {

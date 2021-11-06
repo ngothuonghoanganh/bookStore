@@ -65,7 +65,7 @@ public class confirmDealController extends HttpServlet {
                 discountPrice = ((totalPrice * discount.getPercent()) / 100);
                 deal.setDiscountId(discount.getId());
             } else {
-                deal.setDiscountId(null);
+//                deal.setDiscountId(null);
             }
 
             totalPrice = totalPrice - discountPrice;
@@ -76,12 +76,12 @@ public class confirmDealController extends HttpServlet {
             deal.setTotalPrice(totalPrice);
             bookDAO bookDAO = new bookDAO();
             for (dealDetailDTO cart : carts) {
-                bookDTO book = bookDAO.getOneBook(cart.getBookId());
-                System.out.println(cart.getQuantity());
-                System.out.println(book.getQuantity() < cart.getQuantity());
-                if (book.getQuantity() < cart.getQuantity()) {
-                    error = "'" + book.getName() + "'" + " out of stock and only have " + book.getQuantity();
-                }
+//                bookDTO book = bookDAO.getOneBook(cart.getBookId());
+//                System.out.println(cart.getQuantity());
+//                System.out.println(book.getQuantity() < cart.getQuantity());
+//                if (book.getQuantity() < cart.getQuantity()) {
+//                    error = "'" + book.getName() + "'" + " out of stock and only have " + book.getQuantity();
+//                }
             }
             if (error.equals("")) {
                 statusDeal = dealDAO.confirmOrder(deal, carts);

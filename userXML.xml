@@ -1,11 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <users>
     <user>
         <id>1</id>
-        <fullName>nguyen van a</fullName>
         <username>nguyena</username>
         <password>123456</password>
         <address>Q12</address>
         <email>nguyenvana@gmail.com</email>
+        <fullName>nguyen van a</fullName>
         <role>
             <id>1</id>
             <roleName>user</roleName>
@@ -13,14 +14,20 @@
     </user>
     <user>
         <id>2</id>
-        <fullName>nguyen van b</fullName>
         <username>nguyenb</username>
         <password>123456</password>
         <address>Quan Tan Binh</address>
         <email>bnguyenvan@gmail.com</email>
+        <fullName>nguyen van b</fullName>
         <role>
             <id>2</id>
             <roleName>admin</roleName>
-        </role>  
+        </role>
+    </user>
+    <user>
+        <id>3</id>
+        <username>a</username>
+        <password>a</password>
+        <fullName>a</fullName>
     </user>
 </users>

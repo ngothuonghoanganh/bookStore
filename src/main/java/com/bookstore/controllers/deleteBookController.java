@@ -40,7 +40,7 @@ public class deleteBookController extends HttpServlet {
         try {
             String id = request.getParameter("bookId");
             bookDTO book = new bookDTO();
-            book.setId(id);
+//            book.setId(id);
             book.setStatus("delete");
             bookDAO bookDAO = new bookDAO();
             bookDAO.updateStatus(book);

@@ -7,6 +7,7 @@ package com.bookstore.daos;
 
 import com.bookstore.dtos.userDTO;
 import com.bookstore.dtos.userDTOs;
+import com.bookstore.utils.IDAdapter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -98,8 +99,15 @@ public class userDAO {
         try {
             JAXBContext jc = JAXBContext.newInstance(userDTOs.class);
             Marshaller mar = jc.createMarshaller();
+            File f = new File("C:\\Users\\Admin\\Desktop\\bookStore\\userXML.xml");
+
+            Unmarshaller u = jc.createUnmarshaller();
+            userDTOs users = (userDTOs) u.unmarshal(f);
+            users.getUser().add(user);
+            
             mar.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-            mar.marshal(user, new File("C:\\Users\\Admin\\Desktop\\bookStore\\userXML.xml"));
+            mar.setAdapter(new IDAdapter());
+            mar.marshal(users,f);
 //            File f = new File("C:\\Users\\Admin\\Desktop\\bookStore\\userXML.xml");
 
         } catch (Exception e) {

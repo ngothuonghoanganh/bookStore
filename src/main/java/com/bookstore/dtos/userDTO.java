@@ -9,6 +9,7 @@ import com.bookstore.utils.IDAdapter;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 /**
@@ -25,12 +26,12 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 //    "fullName",
 //    "role"
 //})
-//@XmlRootElement(name = "user")
+@XmlRootElement(name = "user")
 public class userDTO {
 
     @XmlElement(name = "id")
     @XmlJavaTypeAdapter(IDAdapter.class)
-    private int id;
+    private Integer id = 0;
     @XmlElement(name = "username")
     private String username;
     @XmlElement(name = "password")

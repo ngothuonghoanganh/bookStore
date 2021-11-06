@@ -144,7 +144,7 @@ public class bookController extends HttpServlet {
 
             System.out.println(author);
             bookDAO bookDAO = new bookDAO();
-            bookDAO.insertNew(new bookDTO(title, imgDir, description, author, categoryId, importDate, quantity, "active", price, name));
+//            bookDAO.insertNew(new bookDTO(title, imgDir, description, author, categoryId, importDate, quantity, "active", price, name));
         } catch (Exception e) {
             System.out.println(e);
         } finally {

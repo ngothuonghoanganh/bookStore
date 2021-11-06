@@ -50,7 +50,7 @@ public class updateBookController extends HttpServlet {
             String name = request.getParameter("bookName");
             
             bookDAO bookDAO = new bookDAO();
-            bookDAO.update(new bookDTO(id, title, "", description, author, categoryId, "", importDate, quantity, "active", price, name));
+//            bookDAO.update(new bookDTO(id, title, "", description, author, categoryId, "", importDate, quantity, "active", price, name));
             System.out.println(quantity);
         } catch (Exception e) {
             System.out.println(e);

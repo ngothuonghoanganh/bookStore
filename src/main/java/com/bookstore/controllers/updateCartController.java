@@ -49,10 +49,10 @@ public class updateCartController extends HttpServlet {
                 error = "'" + book.getName() + "'" + " out of stock and only have " + book.getQuantity();
             } else {
                 for (dealDetailDTO cart : carts) {
-                    if (cart.getBookId().equals(bookId)) {
-                        cart.setQuantity(quantity);
-                        cart.setPrice(book.getPrice() * quantity);
-                    }
+//                    if (cart.getBookId().equals(bookId)) {
+//                        cart.setQuantity(quantity);
+//                        cart.setPrice(book.getPrice() * quantity);
+//                    }
                 }
 //                carts.forEach(cart -> {
 //                    if (cart.getBookId().equals(bookId)) {

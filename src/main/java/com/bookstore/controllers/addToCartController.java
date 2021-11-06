@@ -47,7 +47,7 @@ public class addToCartController extends HttpServlet {
             int quantity = 1;
             float price = Float.parseFloat(request.getParameter("price"));
 
-            dealDetail.setBookId(bookId);
+//            dealDetail.setBookId(bookId);
             dealDetail.setBookName(bookName);
             dealDetail.setPrice(price);
             dealDetail.setQuantity(quantity);
@@ -59,13 +59,13 @@ public class addToCartController extends HttpServlet {
                 arr.add(dealDetail);
                 session.setAttribute("CART", arr);
             } else {
-                for (dealDetailDTO cart : carts) {
-                    if (!cart.getBookId().equals(bookId)) {
-                        carts.add(dealDetail);
-                        session.removeAttribute("CART");
-                        session.setAttribute("CART", carts);
-                    }
-                }
+//                for (dealDetailDTO cart : carts) {
+//                    if (!cart.getBookId().equals(bookId)) {
+//                        carts.add(dealDetail);
+//                        session.removeAttribute("CART");
+//                        session.setAttribute("CART", carts);
+//                    }
+//                }
             }
 
         } catch (NumberFormatException e) {

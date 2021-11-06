@@ -81,17 +81,17 @@ public class dealDAO {
                     return false;
                 }
             }
-            if (deals.getDiscountId() != null) {
-                //delete discount 
-                String sqlUpdateStatusDiscount = "Update discounts set status = 'used' where id = ?";
-                prStm = conn.prepareStatement(sqlUpdateStatusDiscount);
-                prStm.setInt(1, deals.getDiscountId());
-                rowEffect = prStm.executeUpdate();
-                if (rowEffect == 0) {
-                    conn.rollback();
-                    return false;
-                }
-            }
+//            if (deals.getDiscountId() != null) {
+//                //delete discount 
+//                String sqlUpdateStatusDiscount = "Update discounts set status = 'used' where id = ?";
+//                prStm = conn.prepareStatement(sqlUpdateStatusDiscount);
+//                prStm.setInt(1, deals.getDiscountId());
+//                rowEffect = prStm.executeUpdate();
+//                if (rowEffect == 0) {
+//                    conn.rollback();
+//                    return false;
+//                }
+//            }
 
             String sqlDecreaseQuantity = "UPDATE dbo.books SET quantity = quantity - ? WHERE id = ?";
             for (dealDetailDTO book : cart) {

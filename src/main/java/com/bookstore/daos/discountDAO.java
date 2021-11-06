@@ -5,6 +5,9 @@
  */
 package com.bookstore.daos;
 
+import com.bookstore.dtos.CategoriesDTOs;
+import com.bookstore.dtos.DiscountDTOs;
+import com.bookstore.dtos.dealDTO;
 import com.bookstore.dtos.discountDTO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,6 +17,10 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.naming.NamingException;
 import com.bookstore.utils.MyConnection;
+import java.io.File;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
 
 /**
  *
@@ -75,46 +82,35 @@ public class discountDAO {
         return success;
     }
 
-    public List<discountDTO> getAllDiscount() throws SQLException, NamingException {
-        List<discountDTO> listResouces = new ArrayList<>();
+    public List<discountDTO> getAllDiscounts() throws SQLException, NamingException, JAXBException {
+        DiscountDTOs listDiscounts = null;
         try {
-            conn = MyConnection.getMyConnection();
-            String sql = "SELECT id, discountPercent, code, startDate, endDate from discounts where status = 'active'";
-            prStm = conn.prepareStatement(sql);
-            rs = prStm.executeQuery();
-            while (rs.next()) {
-                discountDTO discount = new discountDTO();
-                discount.setId(rs.getInt("id"));
-                discount.setPercent(rs.getFloat("discountPercent"));
-                discount.setStartDate(rs.getDate("startDate"));
-                discount.setEndDate(rs.getDate("endDate"));
-                discount.setCode(rs.getString("code"));
-                listResouces.add(discount);
-            }
-        } finally {
-            closeConn();
+            JAXBContext jc = JAXBContext.newInstance(discountDTO.class);
+            Unmarshaller u = jc.createUnmarshaller();
+            File f = new File("C:\\Users\\tranv\\Downloads\\bookStore\\discountsXML.xml");
+            listDiscounts = (DiscountDTOs) u.unmarshal(f);
+
+        } catch (Error e) {
+            System.out.println("Error at getAllDiscount: " + e);
         }
-        return listResouces;
+        return listDiscounts.getDiscounts();
     }
 
-    public discountDTO getOneDiscount(String code) throws SQLException, NamingException {
+    public discountDTO getOneDiscount(String code) throws SQLException, NamingException, JAXBException {
         discountDTO discount = new discountDTO();
         try {
 
-            conn = MyConnection.getMyConnection();
-            String sql = "SELECT id, discountPercent, code, startDate, endDate from discounts where status = 'active' and code = ? and GETDATE() >= startDate and GETDATE() <= endDate";
-            prStm = conn.prepareStatement(sql);
-            prStm.setString(1, code);
-            rs = prStm.executeQuery();
-            while (rs.next()) {
-                discount.setId(rs.getInt("id"));
-                discount.setPercent(rs.getFloat("discountPercent"));
-                discount.setStartDate(rs.getDate("startDate"));
-                discount.setEndDate(rs.getDate("endDate"));
-                discount.setCode(rs.getString("code"));
+            JAXBContext jc = JAXBContext.newInstance(discountDTO.class);
+            Unmarshaller u = jc.createUnmarshaller();
+            File f = new File("C:\\Users\\tranv\\Downloads\\bookStore\\discountsXML.xml");
+            List<discountDTO> listDiscounts = getAllDiscounts();
+            for (discountDTO x : listDiscounts) {
+                if (x.getCode().equals(code)) {
+                    discount = x;
+                }
             }
-        } finally {
-            closeConn();
+        }catch(Exception e){
+            System.out.println("Error at getOneDiscount: "+e);
         }
         return discount;
     }

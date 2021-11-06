@@ -23,7 +23,7 @@ public class dealDetaiDTOs {
     @XmlElement(name="dealDetail",required = true)
     protected List<dealDTO> dealDetals;
 
-    public List<dealDTO> getUser() {
+    public List<dealDTO> getDeals() {
         if (dealDetals == null) {
             dealDetals = new ArrayList<dealDTO>();
         }

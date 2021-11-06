@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.bookstore.dtos;
 
 import java.sql.Date;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -17,21 +17,28 @@ import javax.xml.bind.annotation.XmlType;
  * @author Admin
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Discount", propOrder = {
-    "id",
-    "code",
-    "startDate",
-    "endDate",
-    "percent",
-    "status"
-})
+//@XmlType(name = "Discount", propOrder = {
+//    "id",
+//    "code",
+//    "startDate",
+//    "endDate",
+//    "percent",
+//    "status"
+//})
 @XmlRootElement(name = "Discount")
 public class discountDTO {
+
+    @XmlElement(name = "id")
     private int id;
+    @XmlElement(name = "code")
     private String code;
+    @XmlElement(name = "startDate")
     private Date startDate;
+    @XmlElement(name = "endDate")
     private Date endDate;
+    @XmlElement(name = "percent")
     private float percent;
+    @XmlElement(name = "status")
     private String status;
 
     public discountDTO() {
@@ -93,6 +100,5 @@ public class discountDTO {
     public void setStatus(String status) {
         this.status = status;
     }
-    
-    
+
 }

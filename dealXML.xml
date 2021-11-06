@@ -2,7 +2,7 @@
 	<deal>
 		<id>1</id>
 		<userId>1</userId>
-		<discountId>20</discountId>
+		<discountId>1</discountId>
 		<discountCode>VuiVeMuaSach</discountCode>
 		<discountPrice></discountPrice>
 		<totalPrice></totalPrice>
@@ -13,7 +13,7 @@
 	<deal>
 		<id>2</id>
 		<userId>1</userId>
-		<discountId>5</discountId>
+		<discountId>2</discountId>
 		<discountCode>KhuyenMai</discountCode>
 		<discountPrice></discountPrice>
 		<totalPrice></totalPrice>

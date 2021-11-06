@@ -17,15 +17,17 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author tranv
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlRootElement(name = "deals")
-public class dealDTOs {
-    @XmlElement(name="deal",required = true)
-    protected List<dealDTO> deals;
+@XmlRootElement(name = "discounts")
 
-    public List<dealDTO> getDeals() {
-        if (deals == null) {
-            deals = new ArrayList<dealDTO>();
+public class DiscountDTOs {
+
+    @XmlElement(name = "discount", required = true)
+    protected List<discountDTO> discount;
+
+    public List<discountDTO> getDiscounts() {
+        if (discount == null) {
+            discount = new ArrayList<discountDTO>();
         }
-        return this.deals;
+        return this.discount;
     }
 }

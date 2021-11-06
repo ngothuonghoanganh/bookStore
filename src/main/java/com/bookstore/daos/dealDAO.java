@@ -5,7 +5,9 @@
  */
 package com.bookstore.daos;
 
+import com.bookstore.dtos.CategoriesDTOs;
 import com.bookstore.dtos.dealDTO;
+import com.bookstore.dtos.dealDTOs;
 import com.bookstore.dtos.dealDetailDTO;
 import com.bookstore.dtos.dealList;
 import java.sql.Connection;
@@ -16,6 +18,10 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.naming.NamingException;
 import com.bookstore.utils.MyConnection;
+import java.io.File;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
 
 /**
  *
@@ -111,38 +117,17 @@ public class dealDAO {
         }
     }
 
-    public List<dealList> getAllDeal(String bookName, String createDate, String userId) throws SQLException, NamingException {
-        List<dealList> listResouces = new ArrayList<>();
+    public List<dealDTO> getAllDeals(String userId) throws SQLException, NamingException, JAXBException {
+        dealDTOs listResouces = null;
         try {
-            conn = MyConnection.getMyConnection();
-            String sql = "select "
-                    + "deals.id as id,"
-                    + "deals.discountPrice as discountPrice,"
-                    + "deals.totalPrice as totalPrice,"
-                    + "dealDetail.quantity as quantity,"
-                    + "dealDetail.price as price,"
-                    + "users.name as fullName,"
-                    + "deals.createDate as createDate,"
-                    + "books.name as bookName "
-                    + "from deals LEFT JOIN users on deals.userId = users.id "
-                    + "LEFT JOIN dealDetail on deals.id = dealDetail.dealId "
-                    + "LEFT JOIN books on dealDetail.bookId = books.id where deals.id in (select dealId from dealDetail dd join books b on "
-                    + "dd.bookId = b.id where b.name like ?) and deals.createDate like ? and users.id like ?";
-            prStm = conn.prepareStatement(sql);
-            prStm.setString(1, "%" + bookName + "%");
-            prStm.setString(2, "%" + createDate + "%");
-            prStm.setString(3, "%" + userId + "%");
-
-//            prStm.setInt(3, paging);
-//            prStm.setInt(4, pageSize);
-            rs = prStm.executeQuery();
-            while (rs.next()) {
-                listResouces.add(new dealList(rs.getInt("id"), rs.getString("fullName"), rs.getFloat("discountPrice"), rs.getFloat("totalPrice"), rs.getFloat("price"), rs.getInt("quantity"), rs.getDate("createDate"), rs.getString("BookName")));
-            }
-        } finally {
-            closeConn();
+            JAXBContext jc = JAXBContext.newInstance(dealDTO.class);
+            Unmarshaller u = jc.createUnmarshaller();
+            File f = new File("C:\\Users\\tranv\\Downloads\\bookStore\\dealXML.xml");
+            listResouces = (dealDTOs) u.unmarshal(f);
+        } catch (Error e) {
+            System.out.println("Error at getAllDeals: " + e);
         }
-        return listResouces;
+        return listResouces.getDeals();
     }
 
 }

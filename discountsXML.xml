@@ -1,0 +1,13 @@
+<discounts>
+	<discount>
+		<id>1</id>
+		<discountPrice></discountPrice>
+		<discountCode>VuiVeMuaSach</discountCode>
+	</discount>
+
+	<discount>
+		<id>2</id>
+		<discountPrice></discountPrice>
+		<discountCode>KhuyenMai5%</discountCode>
+	</discount>
+</discounts>	

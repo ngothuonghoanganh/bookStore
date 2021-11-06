@@ -1,16 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <categories>
-	<category>
-		<id>1</id>
-		<categoryName>sach chill</categoryName>
-	<category>
-
-	<category>
-		<id>2</id>
-		<categoryName>sach giai tri</categoryName>
-	<category>
-
-	<category>
-		<id>3</id>
-		<categoryName>Sach nau an</categoryName>
-	<category>
+    <category>
+        <id>1</id>
+        <categoryName>sach chill</categoryName>
+    </category>
+    <category>
+        <id>2</id>
+        <categoryName>sach giai tri</categoryName>
+    </category>
+    <category>
+        <id>8</id>
+        <categoryName>Sach nau an</categoryName>
+    </category>
+    <category>
+        <id>4</id>
+        <categoryName>sach</categoryName>
+    </category>
+    <category>
+        <id>5</id>
+        <categoryName>sach 2</categoryName>
+    </category>
 </categories>

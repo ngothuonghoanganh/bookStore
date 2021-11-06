@@ -5,6 +5,7 @@
  */
 package com.bookstore.daos;
 
+import com.bookstore.dtos.categoryDTO;
 import com.bookstore.dtos.userDTO;
 import com.bookstore.dtos.userDTOs;
 import com.bookstore.utils.IDAdapter;
@@ -15,6 +16,9 @@ import java.sql.SQLException;
 import javax.naming.NamingException;
 import com.bookstore.utils.MyConnection;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
@@ -97,17 +101,26 @@ public class userDAO {
     public void insertNew(userDTO user) throws SQLException, ClassNotFoundException, NamingException, JAXBException {
 
         try {
+            List<Integer> intValues = new ArrayList<>();
+
             JAXBContext jc = JAXBContext.newInstance(userDTOs.class);
             Marshaller mar = jc.createMarshaller();
             File f = new File("C:\\Users\\Admin\\Desktop\\bookStore\\userXML.xml");
 
             Unmarshaller u = jc.createUnmarshaller();
             userDTOs users = (userDTOs) u.unmarshal(f);
+
+            for (userDTO us : users.getUser()) {
+                intValues.add(us.getId());
+            }
+
+            user.setId(Collections.max(intValues) + 1);
+
             users.getUser().add(user);
-            
+
             mar.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
             mar.setAdapter(new IDAdapter());
-            mar.marshal(users,f);
+            mar.marshal(users, f);
 //            File f = new File("C:\\Users\\Admin\\Desktop\\bookStore\\userXML.xml");
 
         } catch (Exception e) {

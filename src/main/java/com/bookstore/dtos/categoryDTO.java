@@ -5,11 +5,13 @@
  */
 package com.bookstore.dtos;
 
+import com.bookstore.utils.IDAdapter;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 /**
  *
@@ -20,11 +22,12 @@ import javax.xml.bind.annotation.XmlType;
 //    "id",
 //    "categoryName"
 //})
-@XmlRootElement(name = "Category")
+@XmlRootElement(name = "category")
 public class categoryDTO {
-
+    
+//    @XmlJavaTypeAdapter(IDAdapter.class)
     @XmlElement(name = "id")
-    private int id;
+    private Integer id;
     @XmlElement(name = "categoryName")
     private String categoryName;
 

@@ -48,7 +48,7 @@
             <div class="modal" id="myModal">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <form action="category" method="post">  
+                        <form action="Category" method="post">  
                             <!-- Modal body -->
                             <div class="modal-body">
 

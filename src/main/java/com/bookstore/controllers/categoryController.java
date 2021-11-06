@@ -71,7 +71,7 @@ public class categoryController extends HttpServlet {
             System.out.println(ex);
 
         } finally {
-            response.sendRedirect("category");
+            response.sendRedirect("Category");
         }
     }
 

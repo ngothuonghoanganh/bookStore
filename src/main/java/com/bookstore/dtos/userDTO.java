@@ -30,7 +30,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 public class userDTO {
 
     @XmlElement(name = "id")
-    @XmlJavaTypeAdapter(IDAdapter.class)
+//    @XmlJavaTypeAdapter(IDAdapter.class)
     private Integer id = 0;
     @XmlElement(name = "username")
     private String username;

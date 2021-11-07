@@ -115,7 +115,7 @@ public class bookController extends HttpServlet {
             String description = request.getParameter("description");
             String author = request.getParameter("author");
             int categoryId = Integer.parseInt(request.getParameter("categoryId"));
-            Date importDate = Date.valueOf(request.getParameter("importDate"));
+            //Date importDate = Date.valueOf(request.getParameter("importDate"));
             int quantity = Integer.parseInt(request.getParameter("quantity"));
             float price = Float.parseFloat(request.getParameter("price"));
             String name = request.getParameter("bookName");
@@ -148,7 +148,7 @@ public class bookController extends HttpServlet {
 
             System.out.println(author);
             bookDAO bookDAO = new bookDAO();
-            bookDAO.insertNewBook(new bookDTO(title, imgDir, description, author, categoryId, cate.getCategoryName(), importDate, quantity, "active", price, name));
+            bookDAO.insertNewBook(new bookDTO(title, imgDir, description, author, categoryId, cate.getCategoryName(), quantity, "active", price, name));
         } catch (Exception e) {
             System.out.println(e);
         } finally {

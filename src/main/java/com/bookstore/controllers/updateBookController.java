@@ -46,7 +46,7 @@ public class updateBookController extends HttpServlet {
             String author = request.getParameter("author");
             int categoryId = Integer.parseInt(request.getParameter("categoryId"));
 
-            Date importDate = new Date(266464646);
+            //Date importDate = new Date(266464646);
             int quantity = Integer.parseInt(request.getParameter("quantity"));
             float price = Float.parseFloat(request.getParameter("price"));
             String name = request.getParameter("bookName");
@@ -55,7 +55,7 @@ public class updateBookController extends HttpServlet {
             categoryDTO cate = categoryDao.getOneCate(categoryId);
 
             bookDAO bookDAO = new bookDAO();
-            bookDAO.updateNewBook(new bookDTO(id, "", title, description, author, categoryId, cate.getCategoryName(), importDate, quantity, "active", price, name));
+            bookDAO.updateNewBook(new bookDTO(id, "", title, description, author, categoryId, cate.getCategoryName(), quantity, "active", price, name));
             System.out.println(quantity);
         } catch (Exception e) {
             System.out.println(e);

@@ -26,7 +26,6 @@ import javax.xml.bind.annotation.XmlType;
 //    "author",
 //    "categoryId",
 //    "category",
-//    "importDate",
 //    "status",
 //    "price",
 //    "name"
@@ -48,8 +47,6 @@ public class bookDTO {
     private int categoryId;
     @XmlElement(name = "categoryName")
     private String categoryName;
-    @XmlElement(name = "importDate")
-    private Date importDate;
     @XmlElement(name = "quantity")
     private int quantity;
     @XmlElement(name = "status")
@@ -62,7 +59,7 @@ public class bookDTO {
     public bookDTO() {
     }
 
-    public bookDTO(int id, String title, String image, String description, String author, int categoryId, String categoryName, Date importDate, int quantity, String status, float price, String name) {
+    public bookDTO(int id, String title, String image, String description, String author, int categoryId, String categoryName, int quantity, String status, float price, String name) {
         this.id = id;
         this.title = title;
         this.image = image;
@@ -70,20 +67,18 @@ public class bookDTO {
         this.author = author;
         this.categoryId = categoryId;
         this.categoryName = categoryName;
-        this.importDate = importDate;
         this.quantity = quantity;
         this.status = status;
         this.price = price;
         this.name = name;
     }
 
-    public bookDTO(String title, String image, String description, String author, int categoryId, String categoryName, Date importDate, int quantity, String status, float price, String name) {
+    public bookDTO(String title, String image, String description, String author, int categoryId, String categoryName, int quantity, String status, float price, String name) {
         this.title = title;
         this.image = image;
         this.description = description;
         this.author = author;
         this.categoryId = categoryId;
-        this.importDate = importDate;
         this.quantity = quantity;
         this.status = status;
         this.price = price;
@@ -257,19 +252,19 @@ public class bookDTO {
      * @return possible object is {@link Date }
      *
      */
-    public Date getImportDate() {
-        return importDate;
-    }
-
-    /**
-     * Sets the value of the importDate property.
-     *
-     * @param importDate allowed object is {@link Date }
-     *
-     */
-    public void setImportDate(Date importDate) {
-        this.importDate = importDate;
-    }
+//    public Date getImportDate() {
+//        return importDate;
+//    }
+//
+//    /**
+//     * Sets the value of the importDate property.
+//     *
+//     * @param importDate allowed object is {@link Date }
+//     *
+//     */
+//    public void setImportDate(Date importDate) {
+//        this.importDate = importDate;
+//    }
 
     /**
      * Gets the value of the quantity property.

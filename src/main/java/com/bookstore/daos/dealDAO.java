@@ -166,12 +166,12 @@ public class dealDAO {
         }
     }
 
-    public List<dealDTO> getAllDeals(String userId) throws SQLException, NamingException, JAXBException {
+    public List<dealDTO> getAllDeals(int userId) throws SQLException, NamingException, JAXBException {
         dealDTOs listResouces = null;
         try {
             JAXBContext jc = JAXBContext.newInstance(dealDTO.class);
             Unmarshaller u = jc.createUnmarshaller();
-            File f = new File("C:\\Users\\tranv\\Downloads\\bookStore\\dealXML.xml");
+            File f = new File("C:\\Users\\Admin\\Desktop\\bookStore\\dealXML.xml");
             listResouces = (dealDTOs) u.unmarshal(f);
         } catch (Error e) {
             System.out.println("Error at getAllDeals: " + e);
@@ -179,8 +179,8 @@ public class dealDAO {
         return listResouces.getDeals();
     }
 
-    public List<dealList> getAllDeal(String userId) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+//    public List<dealList> getAllDeal(String userId) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
 
 }

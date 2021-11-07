@@ -38,16 +38,16 @@ public class deleteBookController extends HttpServlet {
         request.setCharacterEncoding("utf-8");
 
         try {
-            String id = request.getParameter("bookId");
+            int id = Integer.parseInt(request.getParameter("bookId"));
             bookDTO book = new bookDTO();
 //            book.setId(id);
             book.setStatus("delete");
             bookDAO bookDAO = new bookDAO();
-            bookDAO.updateStatus(book);
+            bookDAO.deleteNewBook(id);
         } catch (Exception e) {
             System.out.println(e);
         } finally {
-            response.sendRedirect("book");
+            response.sendRedirect("Book");
         }
     }
 

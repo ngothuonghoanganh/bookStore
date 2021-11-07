@@ -6,6 +6,7 @@
 package com.bookstore.controllers;
 
 import com.bookstore.daos.dealDAO;
+import com.bookstore.dtos.dealDTO;
 import com.bookstore.dtos.dealDetailDTO;
 import com.bookstore.dtos.dealHistoryDTO;
 import com.bookstore.dtos.dealList;
@@ -55,92 +56,92 @@ public class listDealController extends HttpServlet {
             userDTO user = (userDTO) session.getAttribute("USER");
             request.setAttribute("user", user);
             request.setAttribute("carts", carts);
-            discountDTO discountSession = (discountDTO) session.getAttribute("DISCOUNT");
-            if (discountSession != null) {
-                System.out.println(discountSession.getPercent());
-            }
-            dealDAO dealDAO = new dealDAO();
-            String userId = "";
-//            if (!user.getRoleID().equals("admin")) {
+//            discountDTO discountSession = (discountDTO) session.getAttribute("DISCOUNT");
+//            if (discountSession != null) {
+//                System.out.println(discountSession.getPercent());
+//            }
+//            dealDAO dealDAO = new dealDAO();
+//            int userId;
+//            if (!user.getRole().getRoleName().equals("admin")) {
 //                userId = user.getId();
 //            }
-            List<dealList> dealLists = dealDAO.getAllDeal(userId);
-            ArrayList<dealHistoryDTO> dealHis = new ArrayList<>();
-
-            for (dealList dealList : dealLists) {
-                for (dealHistoryDTO dealHi : dealHis) {
-//                    if (dealHi.getId().equals(dealList.getId())) {
+//            List<dealDTO> dealLists = dealDAO.getAllDeals(1);
+//            ArrayList<dealHistoryDTO> dealHis = new ArrayList<>();
+//
+//            for (dealDTO dealList : dealLists) {
+//                for (dealHistoryDTO dealHi : dealHis) {
+//                    if (dealHi.getId() == dealList.getId()) {
 //                        dealHistoryDTO dealH = new dealHistoryDTO();
 //                        dealH.setId(dealList.getId());
-//                        dealH.setFullName(dealList.getFullName());
-//                        dealH.setDiscountPrice(dealList.getDiscountPrice());
+////                        dealH.setFullName(dealList.getFullName());
+////                        dealH.setDiscountPrice(dealList.getDiscountPrice());
 //                        dealH.setTotalPrice(dealList.getTotalPrice());
-//                        dealH.setCreatDate(dealList.getCreatDate());
+////                        dealH.setCreatDate(dealList.getCreatDate());
 //                        dealHis.add(dealH);
 //                    }
-                }
-            }
-
-//            dealLists.forEach(dealList -> {
-//                if (!dealHis.stream().anyMatch(b -> b.getId().equals(dealList.getId()))) {
-//                    dealHistoryDTO dealH = new dealHistoryDTO();
-//                    dealH.setId(dealList.getId());
-//                    dealH.setFullName(dealList.getFullName());
-//                    dealH.setDiscountPrice(dealList.getDiscountPrice());
-//                    dealH.setTotalPrice(dealList.getTotalPrice());
-//                    dealH.setCreatDate(dealList.getCreatDate());
-//                    dealHis.add(dealH);
 //                }
-//            });
-            for (dealHistoryDTO dealHistory : dealHis) {
-                ArrayList<dealList> dealListG = new ArrayList<>();
-                for (dealList dealList : dealLists) {
-//                    if (dealHistory.getId().equals(dealList.getId())) {
-//                        dealList dealH = new dealList();
-//                        dealH.setId(dealList.getId());
-//                        dealH.setFullName(dealList.getFullName());
-//                        dealH.setDiscountPrice(dealList.getDiscountPrice());
-//                        dealH.setTotalPrice(dealList.getTotalPrice());
-//                        dealH.setPrice(dealList.getPrice());
-//                        dealH.setQuantity(dealList.getQuantity());
-//                        dealH.setBookName(dealList.getBookName());
-//                        dealListG.add(dealH);
-//                    }
-                }
-//                dealLists.forEach(dealList -> {
-//                    if (dealHistory.getId().equals(dealList.getId())) {
-//                        dealList dealH = new dealList();
-//                        dealH.setId(dealList.getId());
-//                        dealH.setFullName(dealList.getFullName());
-//                        dealH.setDiscountPrice(dealList.getDiscountPrice());
-//                        dealH.setTotalPrice(dealList.getTotalPrice());
-//                        dealH.setPrice(dealList.getPrice());
-//                        dealH.setQuantity(dealList.getQuantity());
-//                        dealH.setBookName(dealList.getBookName());
-//                        dealListG.add(dealH);
-//                    }
-//                });
-                dealHistory.setDealList(dealListG);
-            }
-//            dealHis.forEach(dealHistory -> {
+//            }
+//
+////            dealLists.forEach(dealList -> {
+////                if (!dealHis.stream().anyMatch(b -> b.getId().equals(dealList.getId()))) {
+////                    dealHistoryDTO dealH = new dealHistoryDTO();
+////                    dealH.setId(dealList.getId());
+////                    dealH.setFullName(dealList.getFullName());
+////                    dealH.setDiscountPrice(dealList.getDiscountPrice());
+////                    dealH.setTotalPrice(dealList.getTotalPrice());
+////                    dealH.setCreatDate(dealList.getCreatDate());
+////                    dealHis.add(dealH);
+////                }
+////            });
+//            for (dealHistoryDTO dealHistory : dealHis) {
 //                ArrayList<dealList> dealListG = new ArrayList<>();
-//                dealLists.forEach(dealList -> {
-//                    if (dealHistory.getId().equals(dealList.getId())) {
+//                for (dealDTO dealList : dealLists) {
+//                    if (dealHistory.getId() == dealList.getId()) {
 //                        dealList dealH = new dealList();
 //                        dealH.setId(dealList.getId());
-//                        dealH.setFullName(dealList.getFullName());
-//                        dealH.setDiscountPrice(dealList.getDiscountPrice());
+////                        dealH.setFullName(dealList.getFullName());
+////                        dealH.setDiscountPrice(dealList.getDiscountPrice());
 //                        dealH.setTotalPrice(dealList.getTotalPrice());
-//                        dealH.setPrice(dealList.getPrice());
-//                        dealH.setQuantity(dealList.getQuantity());
-//                        dealH.setBookName(dealList.getBookName());
+////                        dealH.setPrice(dealList.getPrice());
+////                        dealH.setQuantity(dealList.getQuantity());
+////                        dealH.setBookName(dealList.getBookName());
 //                        dealListG.add(dealH);
 //                    }
-//                });
+//                }
+////                dealLists.forEach(dealList -> {
+////                    if (dealHistory.getId().equals(dealList.getId())) {
+////                        dealList dealH = new dealList();
+////                        dealH.setId(dealList.getId());
+////                        dealH.setFullName(dealList.getFullName());
+////                        dealH.setDiscountPrice(dealList.getDiscountPrice());
+////                        dealH.setTotalPrice(dealList.getTotalPrice());
+////                        dealH.setPrice(dealList.getPrice());
+////                        dealH.setQuantity(dealList.getQuantity());
+////                        dealH.setBookName(dealList.getBookName());
+////                        dealListG.add(dealH);
+////                    }
+////                });
 //                dealHistory.setDealList(dealListG);
-//            });
-            request.setAttribute("dealHistory", dealHis);
-            request.setAttribute("discount", discountSession);
+//            }
+////            dealHis.forEach(dealHistory -> {
+////                ArrayList<dealList> dealListG = new ArrayList<>();
+////                dealLists.forEach(dealList -> {
+////                    if (dealHistory.getId().equals(dealList.getId())) {
+////                        dealList dealH = new dealList();
+////                        dealH.setId(dealList.getId());
+////                        dealH.setFullName(dealList.getFullName());
+////                        dealH.setDiscountPrice(dealList.getDiscountPrice());
+////                        dealH.setTotalPrice(dealList.getTotalPrice());
+////                        dealH.setPrice(dealList.getPrice());
+////                        dealH.setQuantity(dealList.getQuantity());
+////                        dealH.setBookName(dealList.getBookName());
+////                        dealListG.add(dealH);
+////                    }
+////                });
+////                dealHistory.setDealList(dealListG);
+////            });
+//            request.setAttribute("dealHistory", dealHis);
+//            request.setAttribute("discount", discountSession);
             url = LIST_DEAL_PAGE;
         } catch (Exception e) {
             System.out.println(e);

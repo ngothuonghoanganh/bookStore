@@ -159,19 +159,6 @@
                                         <div class="row justify-content-center align-items-center">
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    Image :
-                                                </div>
-                                            </div>
-                                            <div class="col-md-8">
-                                                <div class="form-group">
-                                                    <input type="file" name="image" class="form-control" title="Oly use english and not special character" required>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                        <div class="row justify-content-center align-items-center">
-                                            <div class="col-md-4">
-                                                <div class="form-group">
                                                     Title :
                                                 </div>
                                             </div>
@@ -272,7 +259,6 @@
             <div style="height: 10px"></div>
             <div class="row border">
                 <div class="col border" style="min-width: 110px;">Name</div>
-                <div class="col border" style="min-width: 110px;">Image</div>
                 <div class="col border" style="min-width: 110px;">Title</div>
                 <div class="col border" style="min-width: 110px;">Author</div>
                 <!--<div class="col border" style="min-width: 110px;">Import Date</div>-->
@@ -288,12 +274,8 @@
             <c:forEach var="books" items="${books}">
                 <div class="row border">
                     <div class="col border" style="min-width: 110px;">${books.name}</div>
-                    <div class="col border" style="min-width: 110px; padding: 0px">
-                        <img src="${books.image}" style="width: 100px; height: 100px; padding: 10px">
-                    </div>
                     <div class="col border" style="min-width: 110px;">${books.title}</div>
                     <div class="col border" style="min-width: 110px;">${books.author}</div>
-                    <!--<div class="col border" style="min-width: 110px;">${books.importDate}</div>-->
                     <div class="col border" style="min-width: 110px;">${books.quantity}</div>
                     <div class="col border" style="min-width: 110px;">${books.categoryName}</div>
                     <div class="col border" style="min-width: 110px;">${books.price}$</div>  
@@ -321,7 +303,7 @@
                 <div class="modal" id="modelD${books.id}">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
-                            <form action="deleteBook" method="POST">
+                            <form action="DeleteBook" method="POST">
                                 <div class="modal-header">
                                     <h5 class="modal-title">Delete</h5>
                                 </div>
@@ -408,20 +390,7 @@
                                         </div>
 
                                     </div>
-                                    <div class="row justify-content-center align-items-center">
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                Import Date :
-                                            </div>
-                                        </div>
-<!--                                        <div class="col-md-8">
-                                            <div class="form-group">
-                                                <input type="date" name="importDate" value="${books.importDate}" class="form-control" required>
-                                            </div>
-                                        </div>-->
-
-                                    </div>
-
+        
                                     <div class="row justify-content-center align-items-center">
                                         <div class="col-md-4">
                                             <div class="form-group">

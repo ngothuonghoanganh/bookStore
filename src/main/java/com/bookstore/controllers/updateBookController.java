@@ -55,7 +55,7 @@ public class updateBookController extends HttpServlet {
             categoryDTO cate = categoryDao.getOneCate(categoryId);
 
             bookDAO bookDAO = new bookDAO();
-            bookDAO.updateNewBook(new bookDTO(id, "", title, description, author, categoryId, cate.getCategoryName(), quantity, "active", price, name));
+            bookDAO.updateNewBook(new bookDTO(id, title, "", description, author, categoryId, cate.getCategoryName(), quantity, "active", price, name));
             System.out.println(quantity);
         } catch (Exception e) {
             System.out.println(e);

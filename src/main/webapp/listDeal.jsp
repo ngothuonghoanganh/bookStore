@@ -79,7 +79,7 @@
                     <tr>
                         <td>${carts.bookName}</td>
                         <td>${carts.price}</td>
-                <form action="updateCart" method="POST">
+                <form action="UpdateCart" method="POST">
                     <td><input type="number" name="quantity" value="${carts.quantity}"/> </td>
                     <input type="hidden" name="id" value="${carts.bookId}"/>
                     <td><input type="submit" value="Update"/></td>
@@ -185,36 +185,6 @@
         </div>
     </form>
 </div>
-<c:forEach var="dealHistory" items="${dealHistory}">
-    <div class="container">
-        <h4>${dealHistory.fullName} - ${dealHistory.creatDate}</h4>
-        <div class="row justify-content-center">
-            <div class="card" style="width:100%">
-                <table border="1" class="table">
-                    <tr>
-                        <th>Name</th>
-                        <th>Price</th>
-                        <th>Quantity</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        <c:forEach var="carts" items="${dealHistory.dealList}" varStatus="Counter">
-                            <tr>
-                                <td>${carts.bookName}</td>
-                                <td>${carts.price}$</td>
-                                <td>${carts.quantity}</td>
-                            </tr>
-                        </c:forEach>
-                    </tbody>
-                </table>
-                <h5>Price: ${dealHistory.totalPrice + dealHistory.discountPrice}</h5>
-                <h5>Discount Price: ${dealHistory.discountPrice}</h5>
-                <h5>Total Price: ${dealHistory.totalPrice}</h5>
 
-            </div>
-        </div>                      
-    </div>
-    <br>
-</c:forEach>
 </body>
 </html>

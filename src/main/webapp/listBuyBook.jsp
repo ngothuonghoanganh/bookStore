@@ -113,10 +113,8 @@
             <div style="height: 10px"></div>
             <div class="row border">
                 <div class="col border" style="min-width: 110px;">Name</div>
-                <div class="col border" style="min-width: 110px;">Image</div>
                 <div class="col border" style="min-width: 110px;">Title</div>
                 <div class="col border" style="min-width: 110px;">Author</div>
-                <div class="col border" style="min-width: 110px;">Import Date</div>
                 <div class="col border" style="min-width: 110px;">Quantity</div>
                 <div class="col border" style="min-width: 110px;">Category</div>    
                 <div class="col border" style="min-width: 110px;">Price</div>          
@@ -127,17 +125,13 @@
 
             </div>
             <c:forEach var="books" items="${books}">
-                <form action="addToCart" method="POST">
+                <form action="AddToCart" method="POST">
                     <div class="row border">
                         <div class="col border" style="min-width: 110px;">${books.name}</div>
-                        <div class="col border" style="min-width: 110px; padding: 0px">
-                            <img src="${books.image}" style="width: 100px; height: 100px; padding: 10px">
-                        </div>
                         <div class="col border" style="min-width: 110px;">${books.title}</div>
                         <div class="col border" style="min-width: 110px;">${books.author}</div>
-                        <div class="col border" style="min-width: 110px;">${books.importDate}</div>
                         <div class="col border" style="min-width: 110px;">${books.quantity}</div>
-                        <div class="col border" style="min-width: 110px;">${books.category}</div>
+                        <div class="col border" style="min-width: 110px;">${books.categoryName}</div>
                         <div class="col border" style="min-width: 110px;">${books.price}$</div>  
                         <div class="col border" style="min-width: 110px;">${books.description}</div>
                         <div class="col border" style="min-width: 110px;">

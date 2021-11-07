@@ -262,29 +262,29 @@ public class bookDAO {
         return count;
     }
 
-    public bookDTO getOneBook(String bookId) throws SQLException, NamingException {
-        bookDTO book = new bookDTO();
-        try {
-            conn = MyConnection.getMyConnection();
-            String sql = "SELECT id, name, title, image, description, price, quantity FROM books"
-                    + " Where id = ?";
-            prStm = conn.prepareStatement(sql);
-            prStm.setString(1, bookId);
-            rs = prStm.executeQuery();
-            while (rs.next()) {
-                book.setId(rs.getInt("id"));
-                book.setName(rs.getString("name"));
-                book.setTitle(rs.getString("Title"));
-                book.setImage(rs.getString("image"));
-                book.setQuantity(rs.getInt("quantity"));
-                book.setDescription(rs.getString("description"));
-                book.setPrice(rs.getFloat("price"));
-            }
-        } finally {
-            closeConn();
-        }
-        return book;
-    }
+//    public bookDTO getOneBook(String bookId) throws SQLException, NamingException {
+//        bookDTO book = new bookDTO();
+//        try {
+//            conn = MyConnection.getMyConnection();
+//            String sql = "SELECT id, name, title, image, description, price, quantity FROM books"
+//                    + " Where id = ?";
+//            prStm = conn.prepareStatement(sql);
+//            prStm.setString(1, bookId);
+//            rs = prStm.executeQuery();
+//            while (rs.next()) {
+//                book.setId(rs.getInt("id"));
+//                book.setName(rs.getString("name"));
+//                book.setTitle(rs.getString("Title"));
+//                book.setImage(rs.getString("image"));
+//                book.setQuantity(rs.getInt("quantity"));
+//                book.setDescription(rs.getString("description"));
+//                book.setPrice(rs.getFloat("price"));
+//            }
+//        } finally {
+//            closeConn();
+//        }
+//        return book;
+//    }
 
     public boolean update(bookDTO book) throws SQLException, NamingException {
         try {

@@ -46,10 +46,6 @@ public class bookController extends HttpServlet {
         try {
             String bookName = request.getParameter("bookName") != null ? request.getParameter("bookName") : "";
             String categoryName = request.getParameter("categoryName") != null ? request.getParameter("categoryName") : "";
-//            int page = request.getParameter("page") != null ? Integer.parseInt(request.getParameter("page")) : 0;
-//            float minPrice = (request.getParameter("minPrice") != null && !request.getParameter("minPrice").equals("")) ? Float.parseFloat(request.getParameter("minPrice")) : 0;
-//            float maxPrice = (request.getParameter("maxPrice") != null && !request.getParameter("maxPrice").equals("")) ? Float.parseFloat(request.getParameter("maxPrice")) : 100000000;
-
             url = BOOK_PAGE;
             categoryDAO categoryDAO = new categoryDAO();
             List<categoryDTO> listCate = categoryDAO.getAllCate();
@@ -63,11 +59,7 @@ public class bookController extends HttpServlet {
             request.setAttribute("paging", paging);
             request.setAttribute("bookName", bookName);
             request.setAttribute("categoryName", categoryName);
-//            request.setAttribute("minPrice", minPrice);
-//            request.setAttribute("maxPrice", maxPrice);
-//            request.setAttribute("usingDate", usingDate);
-//            request.setAttribute("page", page);
-
+            
             HttpSession session = request.getSession();
             userDTO user = (userDTO) session.getAttribute("USER");
             request.setAttribute("user", user);
@@ -148,7 +140,7 @@ public class bookController extends HttpServlet {
 
             System.out.println(author);
             bookDAO bookDAO = new bookDAO();
-            bookDAO.insertNewBook(new bookDTO(title, imgDir, description, author, categoryId, cate.getCategoryName(), quantity, "active", price, name));
+            bookDAO.insertNewBook(new bookDTO(title, "", description, author, categoryId, cate.getCategoryName(), quantity, "active", price, name));
         } catch (Exception e) {
             System.out.println(e);
         } finally {

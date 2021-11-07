@@ -39,20 +39,21 @@ public class updateCartController extends HttpServlet {
         String error = "";
 
         try {
-            String bookId = request.getParameter("id");
+            int bookId = Integer.parseInt(request.getParameter("id"));
             int quantity = Integer.parseInt(request.getParameter("quantity"));
             bookDAO bookDAO = new bookDAO();
             HttpSession session = request.getSession();
             ArrayList<dealDetailDTO> carts = (ArrayList<dealDetailDTO>) session.getAttribute("CART");
             bookDTO book = bookDAO.getOneBook(bookId);
+            System.out.println(book.getName());
             if (book.getQuantity() < quantity) {
                 error = "'" + book.getName() + "'" + " out of stock and only have " + book.getQuantity();
             } else {
                 for (dealDetailDTO cart : carts) {
-//                    if (cart.getBookId().equals(bookId)) {
-//                        cart.setQuantity(quantity);
-//                        cart.setPrice(book.getPrice() * quantity);
-//                    }
+                    if (cart.getBookId() == bookId) {
+                        cart.setQuantity(quantity);
+                        cart.setPrice(book.getPrice() * quantity);
+                    }
                 }
 //                carts.forEach(cart -> {
 //                    if (cart.getBookId().equals(bookId)) {

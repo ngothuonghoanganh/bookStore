@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<books xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" 
-xs:noNamespaceSchemaLocation="booksSchema.xsd">
+<books>
     <book>
         <id>1</id>
         <title>hoa vang tren co xanh</title>
@@ -29,28 +28,13 @@ xs:noNamespaceSchemaLocation="booksSchema.xsd">
     </book>
     <book>
         <id>3</id>
-        <title>ádas</title>
-        <image>./uploads/632f10ff3d79496c952be50ae9e8c26d109216da55.png</image>
+        <title>ii</title>
+        <image></image>
         <description>a</description>
         <author>Aoyama Gosho</author>
         <categoryId>8</categoryId>
         <categoryName>Sach nau an</categoryName>
-        <importDate>2021-11-18T00:00:00+07:00</importDate>
         <quantity>1000</quantity>
-        <status>active</status>
-        <price>1221.0</price>
-        <name>conan</name>
-    </book>
-    <book>
-        <id>4</id>
-        <title></title>
-        <image>đâs</image>
-        <description>aaaa</description>
-        <author>dá</author>
-        <categoryId>4</categoryId>
-        <categoryName>sach</categoryName>
-        <importDate>1970-01-04T09:01:04.646+07:00</importDate>
-        <quantity>111</quantity>
         <status>active</status>
         <price>1221.0</price>
         <name>conan</name>

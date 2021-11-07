@@ -40,35 +40,40 @@ public class addToCartController extends HttpServlet {
             ArrayList<dealDetailDTO> arr = new ArrayList<>();
             dealDetailDTO dealDetail = new dealDetailDTO();
 
-            String bookId = request.getParameter("bookId");
+            int bookId = Integer.parseInt(request.getParameter("bookId"));
             String bookName = request.getParameter("bookName");
-            String image = request.getParameter("image");
-
+//            String image = request.getParameter("image");
+            boolean check = false;
             int quantity = 1;
             float price = Float.parseFloat(request.getParameter("price"));
 
-//            dealDetail.setBookId(bookId);
+            dealDetail.setBookId(bookId);
             dealDetail.setBookName(bookName);
             dealDetail.setPrice(price);
             dealDetail.setQuantity(quantity);
 
             HttpSession session = request.getSession();
             ArrayList<dealDetailDTO> carts = (ArrayList<dealDetailDTO>) session.getAttribute("CART");
-            System.out.println(carts);
+//            System.out.println(carts);
             if (carts == null || carts.isEmpty()) {
                 arr.add(dealDetail);
                 session.setAttribute("CART", arr);
             } else {
-//                for (dealDetailDTO cart : carts) {
-//                    if (!cart.getBookId().equals(bookId)) {
-//                        carts.add(dealDetail);
-//                        session.removeAttribute("CART");
-//                        session.setAttribute("CART", carts);
-//                    }
-//                }
+                for (dealDetailDTO cart : carts) {
+                    if (cart.getBookId() == bookId) {
+                        check = true;
+                    }
+                }
+
+                if (!check) {
+                    carts.add(dealDetail);
+                    session.removeAttribute("CART");
+                    session.setAttribute("CART", carts);
+                }
             }
 
-        } catch (NumberFormatException e) {
+        } catch (Exception e) {
+            System.out.println(e);
         } finally {
             response.sendRedirect("ListDeal");
         }

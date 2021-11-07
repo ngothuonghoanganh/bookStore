@@ -47,22 +47,41 @@
     </head>
     <body>
         <div class="container">
-            <nav class="navbar fixed-top navbar-light bg-light">
-                <a class="navbar-brand" href="home">Home</a>
-                <c:if test = "${!user.roleID.equals('admin')}">
-                    <a class="navbar-brand" href="listBookToBuy">Book</a>
-                </c:if>
-
-                <a class="navbar-brand" href="listDeal">Deal</a>
-                <a class="navbar-brand" href="discount">Discount</a>
-
-                <c:if test = "${user.roleID.equals('admin')}">
-                    <a class="navbar-brand" href="category">Category</a>
-                    <a class="navbar-brand" href="book">Book</a>
-                </c:if>
-                <a class="navbar-brand" href="logout">Logout</a>
-
-            </nav>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="home">Book Store</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarText">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item ">  
+                            <a class="nav-link" href="home">Home</a>
+                        </li>
+                    <c:if test = "${!user.role.id.equals('admin')}">
+                        <li class="nav-item ">
+                            <a class="nav-link" href="listBookToBuy">Book</a>
+                        </li>
+                    </c:if>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="listDeal">Deal</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="discount">Discount</a>
+                    </li>
+                    <c:if test = "${user.role.id.equals('admin')}">
+                        <li class="nav-item">
+                            <a class="nav-link" href="category">Category</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="book">Book</a>
+                        </li>
+                    </c:if>
+                </ul>
+                <span class="nav-item my-2">
+                    <a class="nav-link my-2" href="logout"><button class="btn btn-primary">Logout</button></a>
+                </span>
+            </div>
+        </nav>
             <h1  class="row justify-content-center" style="margin-top: 50px">Books</h1>
             <form action="book" method="GET">
                 <div class="main">

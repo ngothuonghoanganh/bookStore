@@ -14,7 +14,6 @@ import com.bookstore.dtos.userDTO;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -65,7 +64,7 @@ public class listDealController extends HttpServlet {
 //            if (!user.getRoleID().equals("admin")) {
 //                userId = user.getId();
 //            }
-            List<dealList> dealLists = dealDAO.getAllDeal(bookName, createDate, userId);
+            List<dealList> dealLists = dealDAO.getAllDeal(userId);
             ArrayList<dealHistoryDTO> dealHis = new ArrayList<>();
 
             for (dealList dealList : dealLists) {

@@ -64,7 +64,7 @@
 
             </nav>
             <h1  class="row justify-content-center" style="margin-top: 50px">Books</h1>
-            <form action="book" method="GET">
+            <form action="Book" method="GET">
                 <div class="main">
                     <div class="input-group">
                         <input name="bookName" type="text" class="form-control" placeholder="book name">
@@ -100,7 +100,7 @@
             <div class="modal" id="myModal">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <form action="book" enctype="multipart/form-data" method="post">  
+                        <form action="Book" enctype="multipart/form-data" method="post">  
                             <!-- Modal body -->
                             <div class="modal-body">
 
@@ -276,7 +276,7 @@
                     <div class="col border" style="min-width: 110px;">${books.author}</div>
                     <div class="col border" style="min-width: 110px;">${books.importDate}</div>
                     <div class="col border" style="min-width: 110px;">${books.quantity}</div>
-                    <div class="col border" style="min-width: 110px;">${books.category}</div>
+                    <div class="col border" style="min-width: 110px;">${books.categoryName}</div>
                     <div class="col border" style="min-width: 110px;">${books.price}$</div>  
                     <div class="col border" style="min-width: 110px;">${books.description}</div>
                     <div class="col border" style="min-width: 110px;">

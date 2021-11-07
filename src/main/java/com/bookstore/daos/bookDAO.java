@@ -16,6 +16,7 @@ import java.util.List;
 import javax.naming.NamingException;
 import com.bookstore.utils.MyConnection;
 import java.io.File;
+import java.io.FileWriter;
 import java.util.Collections;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
@@ -46,35 +47,36 @@ public class bookDAO {
         } catch (Exception e) {
         }
     }
-    
+
     public void insertNewBook(bookDTO book) throws SQLException, ClassNotFoundException, NamingException {
         try {
             List<Integer> intValues = new ArrayList<>();
 
-           JAXBContext jc = JAXBContext.newInstance(bookDTOs.class);
+            JAXBContext jc = JAXBContext.newInstance(bookDTOs.class);
             Marshaller mar = jc.createMarshaller();
-            File f = new File("C:\\Users\\Admin\\Desktop\\bookStore\\BooksXML.xml");
+            File f = new File("C:\\Users\\Admin\\Desktop\\bookStore\\booksXML.xml");
 
             Unmarshaller u = jc.createUnmarshaller();
             bookDTOs Books = (bookDTOs) u.unmarshal(f);
-            
+
             for (bookDTO Book : Books.getListBooks()) {
                 intValues.add(Book.getId());
             }
-            
-            book.setId(Collections.max(intValues)+1);
-            
+
+            book.setId(Collections.max(intValues) + 1);
+
             Books.getListBooks().add(book);
-            
+
             mar.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
 //            mar.setAdapter(new IDAdapter());
-            mar.marshal(Books,f);
-        }catch (Exception e) {
-                System.out.println(e);
-        }  finally {
+            mar.marshal(Books, f);
+        } catch (Exception e) {
+            System.out.println(e);
+        } finally {
             closeConn();
         }
     }
+
     public List<bookDTO> getAllBook() throws SQLException, NamingException {
         bookDTOs listBook = null;
         try {
@@ -88,12 +90,13 @@ public class bookDAO {
             listBook = (bookDTOs) u.unmarshal(f);
 
         } catch (Exception e) {
-                System.out.println(e);
+            System.out.println(e);
         } finally {
             closeConn();
         }
         return listBook.getListBooks();
     }
+
     public bookDTO getOneBook(int bookID) throws NamingException, SQLException {
         try {
             System.out.println(bookID);
@@ -106,7 +109,7 @@ public class bookDAO {
             bookDTOs books = (bookDTOs) u.unmarshal(f);
 
             for (bookDTO book : books.getListBooks()) {
-                if(book.getId() == bookID){
+                if (book.getId() == bookID) {
                     return book;
                 }
 //                        if (book.getId() = bookID) {
@@ -189,7 +192,6 @@ public class bookDAO {
 //        }
 //        return listResouces;
 //    }
-
     public int countBook(String bookname, String categoryName, float minPrice, float maxPrice) throws SQLException, NamingException {
         int count = 0;
         try {
@@ -237,22 +239,22 @@ public class bookDAO {
 
     public boolean update(bookDTO book) throws SQLException, NamingException {
         try {
-            conn = MyConnection.getMyConnection();
-            String sql = "UPDATE books SET title = ?, description = ?, price = ?, author = ?, importDate = ?, quantity = ?, categoryId = ?, name = ? WHERE id = ? AND status ='active'";
-            prStm = conn.prepareStatement(sql);
-            prStm.setNString(1, book.getTitle());
-            prStm.setNString(2, book.getDescription());
-            prStm.setFloat(3, book.getPrice());
-            prStm.setNString(4, book.getAuthor());
-            prStm.setDate(5, book.getImportDate());
-            prStm.setInt(6, book.getQuantity());
-            prStm.setInt(7, book.getCategoryId());
-            prStm.setString(8, book.getName());
-            prStm.setInt(9, book.getId());
-            int rowEffect = prStm.executeUpdate();
-            if (rowEffect > 0) {
-                return true;
-            }
+//            conn = MyConnection.getMyConnection();
+//            String sql = "UPDATE books SET title = ?, description = ?, price = ?, author = ?, importDate = ?, quantity = ?, categoryId = ?, name = ? WHERE id = ? AND status ='active'";
+//            prStm = conn.prepareStatement(sql);
+//            prStm.setNString(1, book.getTitle());
+//            prStm.setNString(2, book.getDescription());
+//            prStm.setFloat(3, book.getPrice());
+//            prStm.setNString(4, book.getAuthor());
+//            prStm.setDate(5, book.getImportDate());
+//            prStm.setInt(6, book.getQuantity());
+//            prStm.setInt(7, book.getCategoryId());
+//            prStm.setString(8, book.getName());
+//            prStm.setInt(9, book.getId());
+//            int rowEffect = prStm.executeUpdate();
+//            if (rowEffect > 0) {
+//                return true;
+//            }
         } finally {
             closeConn();
         }

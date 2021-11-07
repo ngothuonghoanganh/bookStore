@@ -12,7 +12,6 @@ import com.bookstore.dtos.categoryDTO;
 import com.bookstore.dtos.userDTO;
 import java.io.IOException;
 import java.util.List;
-import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -57,9 +56,9 @@ public class listBookToBuyController extends HttpServlet {
             request.setAttribute("categories", listCate);
 
             bookDAO bookDAO = new bookDAO();
-            int countBook = bookDAO.countBook(bookName, categoryName, minPrice, maxPrice);
+            int countBook = 0;
             int paging = (int) Math.ceil(countBook / 20);
-            List<bookDTO> listBook = bookDAO.getAllBook(bookName, categoryName, minPrice, maxPrice, page * PAGE_SIZE, PAGE_SIZE);
+            List<bookDTO> listBook = bookDAO.getAllBook();
             request.setAttribute("books", listBook);
             request.setAttribute("paging", paging);
             request.setAttribute("bookName", bookName);

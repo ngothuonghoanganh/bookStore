@@ -46,9 +46,9 @@ public class bookController extends HttpServlet {
         try {
             String bookName = request.getParameter("bookName") != null ? request.getParameter("bookName") : "";
             String categoryName = request.getParameter("categoryName") != null ? request.getParameter("categoryName") : "";
-            int page = request.getParameter("page") != null ? Integer.parseInt(request.getParameter("page")) : 0;
-            float minPrice = (request.getParameter("minPrice") != null && !request.getParameter("minPrice").equals("")) ? Float.parseFloat(request.getParameter("minPrice")) : 0;
-            float maxPrice = (request.getParameter("maxPrice") != null && !request.getParameter("maxPrice").equals("")) ? Float.parseFloat(request.getParameter("maxPrice")) : 100000000;
+//            int page = request.getParameter("page") != null ? Integer.parseInt(request.getParameter("page")) : 0;
+//            float minPrice = (request.getParameter("minPrice") != null && !request.getParameter("minPrice").equals("")) ? Float.parseFloat(request.getParameter("minPrice")) : 0;
+//            float maxPrice = (request.getParameter("maxPrice") != null && !request.getParameter("maxPrice").equals("")) ? Float.parseFloat(request.getParameter("maxPrice")) : 100000000;
 
             url = BOOK_PAGE;
             categoryDAO categoryDAO = new categoryDAO();
@@ -56,17 +56,17 @@ public class bookController extends HttpServlet {
             request.setAttribute("categories", listCate);
 
             bookDAO bookDAO = new bookDAO();
-            int countBook = bookDAO.countBook(bookName, categoryName, minPrice, maxPrice);
+            int countBook = 0;
             int paging = (int) Math.ceil(countBook / 20);
-            List<bookDTO> listBook = bookDAO.getAllBook(bookName, categoryName, minPrice, maxPrice, page * PAGE_SIZE, PAGE_SIZE);
+            List<bookDTO> listBook = bookDAO.getAllBook();
             request.setAttribute("books", listBook);
             request.setAttribute("paging", paging);
             request.setAttribute("bookName", bookName);
             request.setAttribute("categoryName", categoryName);
-            request.setAttribute("minPrice", minPrice);
-            request.setAttribute("maxPrice", maxPrice);
+//            request.setAttribute("minPrice", minPrice);
+//            request.setAttribute("maxPrice", maxPrice);
 //            request.setAttribute("usingDate", usingDate);
-            request.setAttribute("page", page);
+//            request.setAttribute("page", page);
 
             HttpSession session = request.getSession();
             userDTO user = (userDTO) session.getAttribute("USER");
@@ -84,7 +84,7 @@ public class bookController extends HttpServlet {
         BufferedImage image = ImageIO.read(imgFile.getInputStream());
         if (image != null) {
             String fullPath = getServletContext().getRealPath("/uploads");
-            String ProjectPath = fullPath.replace("\\build", "");
+            String ProjectPath = fullPath;
             File imageDir = new File(ProjectPath + File.separator + fileName + "." + fileType);
 //            System.out.println(imageDir);
             imageDir.getParentFile().mkdirs();
@@ -114,7 +114,7 @@ public class bookController extends HttpServlet {
 //            String image = request.getParameter("image");
             String description = request.getParameter("description");
             String author = request.getParameter("author");
-            String categoryId = request.getParameter("categoryId");
+            int categoryId = Integer.parseInt(request.getParameter("categoryId"));
             Date importDate = Date.valueOf(request.getParameter("importDate"));
             int quantity = Integer.parseInt(request.getParameter("quantity"));
             float price = Float.parseFloat(request.getParameter("price"));
@@ -142,13 +142,17 @@ public class bookController extends HttpServlet {
                 }
             }
 
+            categoryDAO categoryDao = new categoryDAO();
+
+            categoryDTO cate = categoryDao.getOneCate(categoryId);
+
             System.out.println(author);
             bookDAO bookDAO = new bookDAO();
-//            bookDAO.insertNew(new bookDTO(title, imgDir, description, author, categoryId, importDate, quantity, "active", price, name));
+            bookDAO.insertNewBook(new bookDTO(title, imgDir, description, author, categoryId, cate.getCategoryName(), importDate, quantity, "active", price, name));
         } catch (Exception e) {
             System.out.println(e);
         } finally {
-            response.sendRedirect("book");
+            response.sendRedirect("Book");
         }
     }
 

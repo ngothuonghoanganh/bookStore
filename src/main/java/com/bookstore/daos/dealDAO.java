@@ -130,4 +130,8 @@ public class dealDAO {
         return listResouces.getDeals();
     }
 
+    public List<dealList> getAllDeal(String userId) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

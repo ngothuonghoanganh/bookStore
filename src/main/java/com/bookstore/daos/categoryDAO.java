@@ -50,27 +50,27 @@ public class categoryDAO {
         try {
             List<Integer> intValues = new ArrayList<>();
 
-           JAXBContext jc = JAXBContext.newInstance(CategoriesDTOs.class);
+            JAXBContext jc = JAXBContext.newInstance(CategoriesDTOs.class);
             Marshaller mar = jc.createMarshaller();
             File f = new File("C:\\Users\\Admin\\Desktop\\bookStore\\CategoriesXML.xml");
 
             Unmarshaller u = jc.createUnmarshaller();
             CategoriesDTOs Categories = (CategoriesDTOs) u.unmarshal(f);
-            
+
             for (categoryDTO Cat : Categories.getCategories()) {
                 intValues.add(Cat.getId());
             }
-            
-            category.setId(Collections.max(intValues)+1);
-            
+
+            category.setId(Collections.max(intValues) + 1);
+
             Categories.getCategories().add(category);
-            
+
             mar.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
 //            mar.setAdapter(new IDAdapter());
-            mar.marshal(Categories,f);
-        }catch (Exception e) {
-                System.out.println(e);
-        }  finally {
+            mar.marshal(Categories, f);
+        } catch (Exception e) {
+            System.out.println(e);
+        } finally {
             closeConn();
         }
     }
@@ -88,10 +88,33 @@ public class categoryDAO {
             listCate = (CategoriesDTOs) u.unmarshal(f);
 
         } catch (Exception e) {
-                System.out.println(e);
+            System.out.println(e);
         } finally {
             closeConn();
         }
         return listCate.getCategories();
+    }
+
+    public categoryDTO getOneCate(int id) throws SQLException, NamingException {
+        try {
+//             System.out.println(username);
+            JAXBContext jc = JAXBContext.newInstance(CategoriesDTOs.class);
+
+            Unmarshaller u = jc.createUnmarshaller();
+
+            File f = new File("C:\\Users\\Admin\\Desktop\\bookStore\\CategoriesXML.xml");
+
+            CategoriesDTOs listCate = (CategoriesDTOs) u.unmarshal(f);
+            for (categoryDTO cate : listCate.getCategories()) {
+                if (cate.getId() == id) {
+                    return cate;
+                }
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        } finally {
+            closeConn();
+        }
+        return null;
     }
 }

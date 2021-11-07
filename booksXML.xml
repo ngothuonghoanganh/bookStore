@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <books>
     <book>
         <id>1</id>
@@ -7,10 +8,9 @@
         <author>Ai Phuong</author>
         <categoryId>1</categoryId>
         <categoryName>sach chill</categoryName>
-        <importDate>25/3/2021</importDate>
         <quantity>100</quantity>
         <status>con hang</status>
-        <price>120000</price>
+        <price>120000.0</price>
         <name>toi thay hoa vang tren co xanh</name>
     </book>
     <book>
@@ -21,10 +21,36 @@
         <author>Truong Vu</author>
         <categoryId>2</categoryId>
         <categoryName>sach giai tri</categoryName>
-        <importDate>15/1/2021</importDate>
         <quantity>200</quantity>
         <status>con hang</status>
-        <price>150000</price>
+        <price>150000.0</price>
         <name>rung la ma</name>
-    </book> 
+    </book>
+    <book>
+        <id>3</id>
+        <title>ádas</title>
+        <image>./uploads/632f10ff3d79496c952be50ae9e8c26d109216da55.png</image>
+        <description>a</description>
+        <author>Aoyama Gosho</author>
+        <categoryId>8</categoryId>
+        <categoryName>Sach nau an</categoryName>
+        <importDate>2021-11-18T00:00:00+07:00</importDate>
+        <quantity>1000</quantity>
+        <status>active</status>
+        <price>1221.0</price>
+        <name>conan</name>
+    </book>
+    <book>
+        <id>4</id>
+        <title>a</title>
+        <image>./uploads/2d0698bca1674288b2de2f8ccd794a0f1df2abff2d.png</image>
+        <description>aaaa</description>
+        <author>dá</author>
+        <categoryId>4</categoryId>
+        <importDate>2021-11-06T00:00:00+07:00</importDate>
+        <quantity>1000</quantity>
+        <status>active</status>
+        <price>1221.0</price>
+        <name>conan</name>
+    </book>
 </books>

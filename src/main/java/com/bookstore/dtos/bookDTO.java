@@ -5,7 +5,8 @@
  */
 package com.bookstore.dtos;
 
-import java.sql.Date;
+//import java.sql.Date;
+import java.util.Date;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -76,7 +77,7 @@ public class bookDTO {
         this.name = name;
     }
 
-    public bookDTO(String title, String image, String description, String author, int categoryId, Date importDate, int quantity, String status, float price, String name) {
+    public bookDTO(String title, String image, String description, String author, int categoryId, String categoryName, Date importDate, int quantity, String status, float price, String name) {
         this.title = title;
         this.image = image;
         this.description = description;
@@ -87,6 +88,7 @@ public class bookDTO {
         this.status = status;
         this.price = price;
         this.name = name;
+        this.categoryName = categoryName;
     }
 
     /**

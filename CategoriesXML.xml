@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<categories>
+<categories xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" 
+xs:noNamespaceSchemaLocation="CategoriesSchema.xsd">
     <category>
         <id>1</id>
         <categoryName>sach chill</categoryName>

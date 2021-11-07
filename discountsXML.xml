@@ -1,4 +1,5 @@
-<discounts>
+<discounts xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" 
+xs:noNamespaceSchemaLocation="discountSchema.xsd">
 	<discount>
 		<id>1</id>
 		<discountPrice></discountPrice>

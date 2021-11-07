@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<books>
+<books xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" 
+xs:noNamespaceSchemaLocation="booksSchema.xsd">
     <book>
         <id>1</id>
         <title>hoa vang tren co xanh</title>

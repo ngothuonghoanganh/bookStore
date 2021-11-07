@@ -20,6 +20,7 @@ import com.bookstore.utils.MyConnection;
 import java.io.File;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
 /**
@@ -81,7 +82,55 @@ public class discountDAO {
         }
         return success;
     }
+        public void updateNewDiscount(discountDTO discount) throws SQLException, ClassNotFoundException, NamingException {
+        try {
+            JAXBContext jc = JAXBContext.newInstance(DiscountDTOs.class);
+            Marshaller mar = jc.createMarshaller();
+            File f = new File("C:\\Users\\Admin\\Desktop\\bookStore\\discountsXML.xml");
 
+            Unmarshaller u = jc.createUnmarshaller();
+            DiscountDTOs Discounts = (DiscountDTOs) u.unmarshal(f);
+            for(int i = 0; i < Discounts.getDiscounts().size(); i++){
+                if(Discounts.getDiscounts().get(i).getId() == discount.getId())
+                {
+                    Discounts.getDiscounts().set(i, discount);
+                }
+            }
+            mar.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+//            mar.setAdapter(new IDAdapter());
+            mar.marshal(Discounts, f);
+        } catch (Exception e) {
+            System.out.println(e);
+        } finally {
+            closeConn();
+        }
+    }
+        public void deleteNewDiscount(int discountID) throws SQLException, ClassNotFoundException, NamingException {
+        try {
+            JAXBContext jc = JAXBContext.newInstance(DiscountDTOs.class);
+            Marshaller mar = jc.createMarshaller();
+            File f = new File("C:\\Users\\Admin\\Desktop\\bookStore\\discountsXML.xml");
+            int tmp = -1;
+            Unmarshaller u = jc.createUnmarshaller();
+            DiscountDTOs Discounts = (DiscountDTOs) u.unmarshal(f);
+            for(int i = 0; i < Discounts.getDiscounts().size(); i++){
+                if(Discounts.getDiscounts().get(i).getId() == discountID)
+                {
+                    tmp = i;
+                }
+            }
+            if(tmp != -1){
+                Discounts.getDiscounts().remove(tmp);
+            }
+            mar.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+//            mar.setAdapter(new IDAdapter());
+            mar.marshal(Discounts, f);
+        } catch (Exception e) {
+            System.out.println(e);
+        } finally {
+            closeConn();
+        }
+    }
     public List<discountDTO> getAllDiscounts() throws SQLException, NamingException, JAXBException {
         DiscountDTOs listDiscounts = null;
         try {

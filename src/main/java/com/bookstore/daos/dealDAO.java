@@ -21,6 +21,7 @@ import com.bookstore.utils.MyConnection;
 import java.io.File;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
 /**
@@ -44,7 +45,55 @@ public class dealDAO {
             conn.close();
         }
     }
+        public void updateNewDeal(dealDTO deal) throws SQLException, ClassNotFoundException, NamingException {
+        try {
+            JAXBContext jc = JAXBContext.newInstance(dealDTOs.class);
+            Marshaller mar = jc.createMarshaller();
+            File f = new File("C:\\Users\\Admin\\Desktop\\bookStore\\dealXML.xml");
 
+            Unmarshaller u = jc.createUnmarshaller();
+            dealDTOs Deals = (dealDTOs) u.unmarshal(f);
+            for(int i = 0; i < Deals.getDeals().size(); i++){
+                if(Deals.getDeals().get(i).getId() == deal.getId())
+                {
+                    Deals.getDeals().set(i, deal);
+                }
+            }
+            mar.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+//            mar.setAdapter(new IDAdapter());
+            mar.marshal(Deals, f);
+        } catch (Exception e) {
+            System.out.println(e);
+        } finally {
+            closeConn();
+        }
+    }
+        public void deleteNewDeal(int dealID) throws SQLException, ClassNotFoundException, NamingException {
+        try {
+            JAXBContext jc = JAXBContext.newInstance(dealDTOs.class);
+            Marshaller mar = jc.createMarshaller();
+            File f = new File("C:\\Users\\Admin\\Desktop\\bookStore\\dealXML.xml");
+            int tmp = -1;
+            Unmarshaller u = jc.createUnmarshaller();
+            dealDTOs Deals = (dealDTOs) u.unmarshal(f);
+            for(int i = 0; i < Deals.getDeals().size(); i++){
+                if(Deals.getDeals().get(i).getId() == dealID)
+                {
+                    tmp = i;
+                }
+            }
+            if(tmp != -1){
+                Deals.getDeals().remove(tmp);
+            }
+            mar.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+//            mar.setAdapter(new IDAdapter());
+            mar.marshal(Deals, f);
+        } catch (Exception e) {
+            System.out.println(e);
+        } finally {
+            closeConn();
+        }
+    }
     public boolean confirmOrder(dealDTO deals, ArrayList<dealDetailDTO> cart) throws SQLException, NamingException {
         try {
             conn = MyConnection.getMyConnection();

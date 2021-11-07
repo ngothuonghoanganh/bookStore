@@ -76,6 +76,55 @@ public class bookDAO {
             closeConn();
         }
     }
+    public void updateNewBook(bookDTO book) throws SQLException, ClassNotFoundException, NamingException {
+        try {
+            JAXBContext jc = JAXBContext.newInstance(bookDTOs.class);
+            Marshaller mar = jc.createMarshaller();
+            File f = new File("C:\\Users\\Admin\\Desktop\\bookStore\\booksXML.xml");
+
+            Unmarshaller u = jc.createUnmarshaller();
+            bookDTOs Books = (bookDTOs) u.unmarshal(f);
+            for(int i = 0; i < Books.getListBooks().size(); i++){
+                if(Books.getListBooks().get(i).getId() == book.getId())
+                {
+                    Books.getListBooks().set(i, book);
+                }
+            }
+            mar.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+//            mar.setAdapter(new IDAdapter());
+            mar.marshal(Books, f);
+        } catch (Exception e) {
+            System.out.println(e);
+        } finally {
+            closeConn();
+        }
+    }
+        public void deleteNewBook(int bookID) throws SQLException, ClassNotFoundException, NamingException {
+        try {
+            JAXBContext jc = JAXBContext.newInstance(bookDTOs.class);
+            Marshaller mar = jc.createMarshaller();
+            File f = new File("C:\\Users\\Admin\\Desktop\\bookStore\\booksXML.xml");
+            int tmp = -1;
+            Unmarshaller u = jc.createUnmarshaller();
+            bookDTOs Books = (bookDTOs) u.unmarshal(f);
+            for(int i = 0; i < Books.getListBooks().size(); i++){
+                if(Books.getListBooks().get(i).getId() == bookID)
+                {
+                    tmp = i;
+                }
+            }
+            if(tmp != -1){
+                Books.getListBooks().remove(tmp);
+            }
+            mar.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+//            mar.setAdapter(new IDAdapter());
+            mar.marshal(Books, f);
+        } catch (Exception e) {
+            System.out.println(e);
+        } finally {
+            closeConn();
+        }
+    }
 
     public List<bookDTO> getAllBook() throws SQLException, NamingException {
         bookDTOs listBook = null;

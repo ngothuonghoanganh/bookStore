@@ -6,7 +6,9 @@
 package com.bookstore.controllers;
 
 import com.bookstore.daos.bookDAO;
+import com.bookstore.daos.categoryDAO;
 import com.bookstore.dtos.bookDTO;
+import com.bookstore.dtos.categoryDTO;
 import java.io.IOException;
 import java.sql.Date;
 import java.util.logging.Logger;
@@ -23,7 +25,6 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "UpdateBook", urlPatterns = {"/UpdateBook"})
 public class updateBookController extends HttpServlet {
 
-
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -38,24 +39,28 @@ public class updateBookController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("utf-8");
         try {
-            String id = request.getParameter("bookId");
+            int id = Integer.parseInt(request.getParameter("bookId"));
             String title = request.getParameter("title");
 //            String image = request.getParameter("image");
             String description = request.getParameter("description");
             String author = request.getParameter("author");
-            String categoryId = request.getParameter("categoryId");
-            Date importDate = Date.valueOf(request.getParameter("importDate"));
+            int categoryId = Integer.parseInt(request.getParameter("categoryId"));
+
+            Date importDate = new Date(266464646);
             int quantity = Integer.parseInt(request.getParameter("quantity"));
             float price = Float.parseFloat(request.getParameter("price"));
             String name = request.getParameter("bookName");
-            
+            categoryDAO categoryDao = new categoryDAO();
+
+            categoryDTO cate = categoryDao.getOneCate(categoryId);
+
             bookDAO bookDAO = new bookDAO();
-//            bookDAO.update(new bookDTO(id, title, "", description, author, categoryId, "", importDate, quantity, "active", price, name));
+            bookDAO.updateNewBook(new bookDTO(id, "", title, description, author, categoryId, cate.getCategoryName(), importDate, quantity, "active", price, name));
             System.out.println(quantity);
         } catch (Exception e) {
             System.out.println(e);
         } finally {
-            response.sendRedirect("book");
+            response.sendRedirect("Book");
         }
     }
 

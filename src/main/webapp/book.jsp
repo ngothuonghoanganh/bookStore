@@ -182,7 +182,7 @@
                                             </div>
 
                                         </div>
-                                        <div class="row justify-content-center align-items-center">
+<!--                                        <div class="row justify-content-center align-items-center">
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     Import Date :
@@ -194,7 +194,7 @@
                                                 </div>
                                             </div>
 
-                                        </div>
+                                        </div>-->
 
                                         <div class="row justify-content-center align-items-center">
                                             <div class="col-md-4">
@@ -275,7 +275,7 @@
                 <div class="col border" style="min-width: 110px;">Image</div>
                 <div class="col border" style="min-width: 110px;">Title</div>
                 <div class="col border" style="min-width: 110px;">Author</div>
-                <div class="col border" style="min-width: 110px;">Import Date</div>
+                <!--<div class="col border" style="min-width: 110px;">Import Date</div>-->
                 <div class="col border" style="min-width: 110px;">Quantity</div>
                 <div class="col border" style="min-width: 110px;">Category</div>    
                 <div class="col border" style="min-width: 110px;">Price</div>          
@@ -293,7 +293,7 @@
                     </div>
                     <div class="col border" style="min-width: 110px;">${books.title}</div>
                     <div class="col border" style="min-width: 110px;">${books.author}</div>
-                    <div class="col border" style="min-width: 110px;">${books.importDate}</div>
+                    <!--<div class="col border" style="min-width: 110px;">${books.importDate}</div>-->
                     <div class="col border" style="min-width: 110px;">${books.quantity}</div>
                     <div class="col border" style="min-width: 110px;">${books.categoryName}</div>
                     <div class="col border" style="min-width: 110px;">${books.price}$</div>  
@@ -353,7 +353,7 @@
                 <div class="modal" id="model${books.id}">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
-                            <form action="updateBook" method="POST">
+                            <form action="UpdateBook" method="POST">
 
 
                                 <div class="modal-header">
@@ -414,11 +414,11 @@
                                                 Import Date :
                                             </div>
                                         </div>
-                                        <div class="col-md-8">
+<!--                                        <div class="col-md-8">
                                             <div class="form-group">
                                                 <input type="date" name="importDate" value="${books.importDate}" class="form-control" required>
                                             </div>
-                                        </div>
+                                        </div>-->
 
                                     </div>
 

@@ -106,7 +106,7 @@
                     Price
                 </th>
                 <td colspan="1">
-                    ${(total*discount.percent)/100}
+                    ${total}
                 </td>
             </tr>
             <tr>

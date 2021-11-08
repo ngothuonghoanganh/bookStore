@@ -6,6 +6,7 @@
 package com.bookstore.dtos;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -36,6 +37,8 @@ public class dealDTO {
     private int userId;
     @XmlElement(name = "discountId")
     private int discountId;
+    @XmlElement(name = "dealDTO")
+    private ArrayList<dealDetailDTO> dealDetailDTOs;
     @XmlElement(name = "discountCode")
     private String discountCode;
     @XmlElement(name = "discountPirce")

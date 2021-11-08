@@ -1,24 +1,30 @@
 <deals xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" 
-xs:noNamespaceSchemaLocation="dealSchema.xsd">
-	<deal>
-		<id>1</id>
-		<userId>1</userId>
-		<discountId>1</discountId>
-		<discountCode>VuiVeMuaSach</discountCode>
-		<discountPrice>1.0</discountPrice>
-		<totalPrice>50.0</totalPrice>
-		<createDate>2021-06-13</createDate>
-		<status>con hang</status>
-	</deal>
-
-	<deal>
-		<id>2</id>
-		<userId>1</userId>
-		<discountId>2</discountId>
-		<discountCode>KhuyenMai</discountCode>
-		<discountPrice>1.0</discountPrice>
-		<totalPrice>50.0</totalPrice>
-		<createDate>2021-06-12</createDate>
-		<status>con hang</status>
-	</deal>
+       xs:noNamespaceSchemaLocation="dealSchema.xsd">
+    <deal>
+        <id>1</id>
+        <userId>1</userId>
+        <discountId>1</discountId>
+        <dealDetails>
+            <dealDetail>
+                <id>1</id>
+                <dealId>1</dealId>
+                <bookId>1</bookId>
+                <bookName>hoa vang tren co xanh</bookName>
+                <quantity>1</quantity>
+                <price>120000</price>
+            </dealDetail>
+            <dealDetail>
+                <id>1</id>
+                <bookId>1</bookId>
+                <bookName>rung la ma</bookName>
+                <quantity>2</quantity>
+                <price>120000</price>
+            </dealDetail>
+        </dealDetails>  
+        <discountCode>VuiVeMuaSach</discountCode>
+        <discountPrice>1.0</discountPrice>
+        <totalPrice>50.0</totalPrice>
+        <createDate>2021-06-13</createDate>
+        <status>con hang</status>
+    </deal>
 </deals>

@@ -30,7 +30,7 @@
                         <li class="nav-item">  
                             <a class="nav-link" href="Home">Home</a>
                         </li>
-                    <c:if test = "${!user.role.id.equals('admin')}">
+                    <c:if test = "${!user.role.roleName.equals('admin')}">
                         <li class="nav-item">
                             <a class="nav-link" href="listBookToBuy">Book</a>
                         </li>
@@ -41,7 +41,7 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="Discount">Discount</a>
                     </li>
-                    <c:if test = "${user.role.id.equals('admin')}">
+                    <c:if test = "${user.role.roleName.equals('admin')}">
                         <li class="nav-item">
                             <a class="nav-link" href="Category">Category</a>
                         </li>
@@ -56,7 +56,7 @@
             </div>
         </nav>
             <h1  class="row justify-content-center" style="margin-top: 50px">Discounts</h1>
-            <c:if test = "${user.role.id.equals('admin')}"> 
+            <c:if test = "${user.role.roleName.equals('admin')}"> 
 
                 <button type="button" class="btn btn-primary center" data-toggle="modal" data-target="#myModal">
                     Add Discount

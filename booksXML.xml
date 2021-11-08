@@ -9,8 +9,8 @@
         <categoryId>1</categoryId>
         <categoryName>sach chill</categoryName>
         <quantity>100</quantity>
-        <status>con hang</status>
-        <price>120000.0</price>
+        <status>active</status>
+        <price>10.0</price>
         <name>toi thay hoa vang tren co xanh</name>
     </book>
     <book>

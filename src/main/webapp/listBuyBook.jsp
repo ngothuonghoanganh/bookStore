@@ -67,7 +67,7 @@
                     <li class="nav-item ">  
                         <a class="nav-link" href="Home">Home</a>
                     </li>
-                <c:if test = "${!user.role.id.equals('admin')}">
+                <c:if test = "${!useruser.role.roleName.equals('admin')}">
                     <li class="nav-item active">
                         <a class="nav-link" href="ListBookToBuy">Book</a>
                     </li>
@@ -78,7 +78,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="Discount">Discount</a>
                 </li>
-                <c:if test = "${user.role.id.equals('admin')}">
+                <c:if test = "${user.role.roleName.equals('admin')}">
                     <li class="nav-item ">
                         <a class="nav-link" href="Category">Category</a>
                     </li>

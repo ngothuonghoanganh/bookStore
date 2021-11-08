@@ -46,7 +46,7 @@
                     <li class="nav-item ">  
                         <a class="nav-link" href="Home">Home</a>
                     </li>
-                <c:if test = "${!user.role.id.equals('admin')}">
+                <c:if test = "${!user.role.roleName.equals('admin')}">
                     <li class="nav-item ">
                         <a class="nav-link" href="ListBookToBuy">Book</a>
                     </li>
@@ -57,7 +57,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="Discount">Discount</a>
                 </li>
-                <c:if test = "${user.role.id.equals('admin')}">
+                <c:if test = "${user.role.roleName.equals('admin')}">
                     <li class="nav-item">
                         <a class="nav-link" href="Category">Category</a>
                     </li>
@@ -75,7 +75,7 @@
 <c:forEach var="carts" items="${carts}">
     <c:set var="total" value="${total + carts.price}" />
 </c:forEach>
-        <c:if test = "${!user.role.id.equals('admin')}">
+        <c:if test = "${!user.role.roleName.equals('admin')}">
             <c:if test="${not empty carts}">
             <table class="table margin-top-100">
                 <thead>

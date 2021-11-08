@@ -25,6 +25,10 @@ and open the template in the editor.
                 <xs:element name="name" type="xs:string" minOccurs="0"/>
             </xs:sequence>
         </xs:complexType>
+        <xs:unique name="uniqueId">
+            <xs:selector xpath="books/book/id"/>
+            <xs:field xpath="."/>
+        </xs:unique>
     </xs:element>
       
     

@@ -8,17 +8,21 @@ and open the template in the editor.
 <xs:schema version="1.0"
            xmlns:xs="http://www.w3.org/2001/XMLSchema"
            elementFormDefault="qualified">
-<xs:element name="dealDetail">
+    <xs:element name="dealDetail">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="id" type="xs:int" />
                 <xs:element name="dealId" type="xs:int" />
                 <xs:element name="bookId" type="xs:int" />
-                <xs:element name="bookName" type="xs:string" minOccurs="0"/>
-                <xs:element name="quantity" type="xs:int" minOccurs="0"/>
-                <xs:element name="price" type="xs:decimal" minOccurs="0"/>
+                <xs:element name="bookName" type="notEmpty"/>
+                <xs:element name="quantity" type="quantityType"/>
+                <xs:element name="price" type="priceType"/>
             </xs:sequence>
         </xs:complexType>
+        <xs:unique name="uniqueId">
+            <xs:selector xpath="dealDetails/dealDetail/id"/>
+            <xs:field xpath="."/>
+        </xs:unique>
     </xs:element> 
     
     <xs:element name="dealDetails">
@@ -28,4 +32,22 @@ and open the template in the editor.
             </xs:sequence>
         </xs:complexType>
     </xs:element>
+
+    <xs:simpleType name="notEmpty">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+        <xs:simpleType name="quantityType">
+            <xs:restriction base="xs:int">
+                <xs:minExclusive value="0"/>
+            </xs:restriction>
+        </xs:simpleType>
+
+        <xs:simpleType name="priceType">
+            <xs:restriction base="xs:decimal">
+                <xs:minInclusive value="0" />
+            </xs:restriction>
+        </xs:simpleType>
 </xs:schema>

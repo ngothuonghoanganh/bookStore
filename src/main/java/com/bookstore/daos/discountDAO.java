@@ -65,7 +65,7 @@ public class discountDAO {
                 prStm.setFloat(1, discount.getPercent());
                 prStm.setDate(2, discount.getStartDate());
                 prStm.setDate(3, discount.getEndDate());
-                prStm.setString(4, discount.getCode().toUpperCase());
+                prStm.setString(4, discount.getDiscountCode().toUpperCase());
                 prStm.setString(5, "active");
                 int rowEffect = prStm.executeUpdate();
                 if (rowEffect == 0) {
@@ -154,7 +154,7 @@ public class discountDAO {
             File f = new File("C:\\Users\\tranv\\Downloads\\bookStore\\discountsXML.xml");
             List<discountDTO> listDiscounts = getAllDiscounts();
             for (discountDTO x : listDiscounts) {
-                if (x.getCode().equals(code)) {
+                if (x.getDiscountCode().equals(code)) {
                     discount = x;
                 }
             }

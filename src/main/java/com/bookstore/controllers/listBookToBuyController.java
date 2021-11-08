@@ -58,6 +58,11 @@ public class listBookToBuyController extends HttpServlet {
             bookDAO bookDAO = new bookDAO();
             int countBook = 0;
             int paging = (int) Math.ceil(countBook / 20);
+            if(page < 1){
+                page = 1;
+            } else if(page > paging ){
+                page = paging;
+            }
             List<bookDTO> listBook = bookDAO.getAllBook();
             request.setAttribute("books", listBook);
             request.setAttribute("paging", paging);

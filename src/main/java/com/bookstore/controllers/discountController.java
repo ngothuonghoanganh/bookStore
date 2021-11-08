@@ -49,7 +49,7 @@ public class discountController extends HttpServlet {
             request.setAttribute("user", user);
 
             discountDAO categoryDAO = new discountDAO();
-            List<discountDTO> discounts = categoryDAO.getAllDiscount();
+            List<discountDTO> discounts = categoryDAO.getAllDiscounts();
             request.setAttribute("discounts", discounts);
             url = DISCOUNT_PAGE;
         } catch (Exception e) {
@@ -73,7 +73,7 @@ public class discountController extends HttpServlet {
             float discountPercent = Float.parseFloat(request.getParameter("discountPercent"));
 
             discountDTO discountDTO = new discountDTO();
-            discountDTO.setCode(discountCode);
+            discountDTO.setDiscountCode(discountCode);
             discountDTO.setStartDate(startDate);
             discountDTO.setEndDate(endDate);
             discountDTO.setPercent(discountPercent);
@@ -88,9 +88,9 @@ public class discountController extends HttpServlet {
 
         } finally {
             if (!error.equals("")) {
-                response.sendRedirect("discount?message=" + error);
+                response.sendRedirect("Discount?message=" + error);
             } else {
-                response.sendRedirect("discount");
+                response.sendRedirect("Discount");
             }
         }
     }

@@ -41,7 +41,7 @@ public class confirmDealController extends HttpServlet {
             discountDTO discountSession = (discountDTO) session.getAttribute("DISCOUNT");
             String discountCode = "";
             if (discountSession != null) {
-                discountCode = discountSession.getCode();
+                discountCode = discountSession.getDiscountCode();
             }
             discountDAO discountDAO = new discountDAO();
             discountDTO discount = discountDAO.getOneDiscount(discountCode);
@@ -54,14 +54,14 @@ public class confirmDealController extends HttpServlet {
 
             float totalPrice = 0;
 
-            if (discount.getCode() == null) {
+            if (discount.getDiscountCode()== null) {
                 discount.setPercent(0);
             }
             for (dealDetailDTO cart : carts) {
                 totalPrice = totalPrice + cart.getPrice();
             }
             float discountPrice = 0;
-            if (discount.getCode() != null) {
+            if (discount.getDiscountCode()!= null) {
                 discountPrice = ((totalPrice * discount.getPercent()) / 100);
                 deal.setDiscountId(discount.getId());
             } else {

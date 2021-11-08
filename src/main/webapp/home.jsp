@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Home Page</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -27,25 +27,46 @@
                 
     </head>
     <body>
-        <nav class="navbar fixed-top navbar-light bg-light">
-            <a class="navbar-brand" href="home">Home</a>
-            <c:if test = "${!user.role.roleName.equals('admin')}">
-                <a class="navbar-brand" href="listBookToBuy">Book</a>
-            </c:if>
-
-            <a class="navbar-brand" href="listDeal">Deal</a>
-            <a class="navbar-brand" href="discount">Discount</a>
-
-            <c:if test = "${user.role.roleName.equals('admin')}">
-                <a class="navbar-brand" href="category">Category</a>
-                <a class="navbar-brand" href="book">Book</a>
-            </c:if>
-            <a class="navbar-brand" href="logout">Logout</a>
-
-        </nav>
-        <%--<c:forEach var="user" items="${user}">--%> 
-        <h1 style="margin-top: 100px">${user.fullName} (${user.role.roleName})</h1>
-        <%--</c:forEach>--%>
-
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="Home">Book Store</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">  
+                        <a class="nav-link" href="Home">Home</a>
+                    </li>
+                <c:if test = "${!user.role.id.equals('admin')}">
+                    <li class="nav-item ">
+                        <a class="nav-link" href="ListBookToBuy">Book</a>
+                    </li>
+                </c:if>
+                <li class="nav-item ">
+                    <a class="nav-link" href="ListDeal">Deal</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Discount">Discount</a>
+                </li>
+                <c:if test = "${user.role.id.equals('admin')}">
+                    <li class="nav-item ">
+                        <a class="nav-link" href="Category">Category</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Book">Book</a>
+                    </li>
+                </c:if>
+            </ul>
+            <span class="nav-item my-2">
+                <a class="nav-link my-2" href="Logout"><button class="btn btn-primary">Logout</button></a>
+            </span>
+        </div>
+    </nav>
+        <c:if test="${not empty user}"> 
+            <h1 style="margin-top: 100px">${user.fullName} (${user.role.roleName})</h1>
+        </c:if>
+        <c:if test="${empty user}">
+            <c:redirect url="login.jsp"></c:redirect>
+        </c:if>
     </body>
 </html>

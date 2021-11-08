@@ -11,7 +11,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta charset="ISO-8859-1">
-        <title>JSP Page</title>
+        <title>List buy book Page</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -43,42 +43,52 @@
                 pointer-events: none;
                 color: #aaa;
             }
+
+            .max-width-30px{
+                max-width: 30px;
+            }
+            .center-screen {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+            }
         </style>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="home">Book Store</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarText">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item ">  
-                            <a class="nav-link" href="home">Home</a>
-                        </li>
-                    <c:if test = "${!user.role.id.equals('admin')}">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="listBookToBuy">Book</a>
-                        </li>
-                    </c:if>
+            <a class="navbar-brand" href="Home">Book Store</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item ">  
+                        <a class="nav-link" href="Home">Home</a>
+                    </li>
+                <c:if test = "${!user.role.id.equals('admin')}">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="ListBookToBuy">Book</a>
+                    </li>
+                </c:if>
+                <li class="nav-item ">
+                    <a class="nav-link" href="ListDeal">Deal</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Discount">Discount</a>
+                </li>
+                <c:if test = "${user.role.id.equals('admin')}">
                     <li class="nav-item ">
-                        <a class="nav-link" href="listDeal">Deal</a>
+                        <a class="nav-link" href="Category">Category</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="discount">Discount</a>
+                        <a class="nav-link" href="Book">Book</a>
                     </li>
-                    <c:if test = "${user.role.id.equals('admin')}">
-                        <li class="nav-item">
-                            <a class="nav-link" href="category">Category</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="book">Book</a>
-                        </li>
-                    </c:if>
-                </ul>
-                <span class="nav-item my-2">
-                    <a class="nav-link my-2" href="logout"><button class="btn btn-primary">Logout</button></a>
-                </span>
+                </c:if>
+            </ul>
+            <span class="nav-item my-2">
+                <a class="nav-link my-2" href="Logout"><button class="btn btn-primary">Logout</button></a>
+            </span>
             </div>
         </nav>
             <h1  class="row justify-content-center" style="margin-top: 50px">Books</h1>
@@ -111,63 +121,64 @@
             </form>
 
             <div style="height: 10px"></div>
-            <div class="row border">
-                <div class="col border" style="min-width: 110px;">Name</div>
-                <div class="col border" style="min-width: 110px;">Title</div>
-                <div class="col border" style="min-width: 110px;">Author</div>
-                <div class="col border" style="min-width: 110px;">Quantity</div>
-                <div class="col border" style="min-width: 110px;">Category</div>    
-                <div class="col border" style="min-width: 110px;">Price</div>          
-                <div class="col border" style="min-width: 110px;">Description</div>
-                <div class="col border" style="min-width: 110px;"></div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th  scope="col" class="max-width-30px" >No</th>
+                <th  scope="col">Name</th>
+                <th  scope="col" >Title</th>
+                <th  scope="col" >Author</th>
+                <th  scope="col" >Quantity</th>
+                <th  scope="col" >Category</th>    
+                <th  scope="col" >Price</th>          
+                <th  scope="col" >Description</th>
+                <th  scope="col" ></th>
 
                 <div class=""></div>
-
-            </div>
-            <c:forEach var="books" items="${books}">
+                </tr>
+                <thead>
+                    <tbody>    
+            <c:forEach var="books" items="${books}" varStatus="status">
+                <tr>
                 <form action="AddToCart" method="POST">
-                    <div class="row border">
-                        <div class="col border" style="min-width: 110px;">${books.name}</div>
-                        <div class="col border" style="min-width: 110px;">${books.title}</div>
-                        <div class="col border" style="min-width: 110px;">${books.author}</div>
-                        <div class="col border" style="min-width: 110px;">${books.quantity}</div>
-                        <div class="col border" style="min-width: 110px;">${books.categoryName}</div>
-                        <div class="col border" style="min-width: 110px;">${books.price}$</div>  
-                        <div class="col border" style="min-width: 110px;">${books.description}</div>
-                        <div class="col border" style="min-width: 110px;">
+                    <div class="row ">
+                        <td class="max-width-30px" >${status.index + 1}</td>
+                        <td  >${books.name}</td>
+                        <td >${books.title}</td>
+                        <td  >${books.author}</td>
+                        <td >${books.quantity}</td>
+                        <td >${books.categoryName}</td>
+                        <td >${books.price}$</td>  
+                        <td >${books.description}</td>
+                        <td >
                             <button type="submit" class="btn btn-primary" style="width: 80px; margin: auto" data-toggle="modal" data-target="#model${books.id}">
                                 Add To Cart
                             </button>
-                        </div>
-                        <div class="col-md-8 invisible" style="height: 0px">
                             <div class="form-group">
-                                <input type="text" name="bookId" value="${books.id}" class="form-control" title="Only use english and not special character">
+                                <input type="hidden" name="bookId" value="${books.id}" class="form-control" title="Only use english and not special character">
                             </div>
-                        </div>
-                        <div class="col-md-8 invisible" style="height: 0px">
                             <div class="form-group">
-                                <input type="text" name="bookName" value="${books.name}" class="form-control" title="Only use english and not special character">
+                                <input type="hidden" name="bookName" value="${books.name}" class="form-control" title="Only use english and not special character">
                             </div>
-                        </div>
-                        <div class="col-md-8 invisible" style="height: 0px">
                             <div class="form-group">
-                                <input type="text" name="price" value="${books.price}" class="form-control" title="Only use english and not special character">
+                                <input type="hidden" name="price" value="${books.price}" class="form-control" title="Only use english and not special character">
                             </div>
-                        </div>
+                        </td>
                     </div>
                 </form>
-
+            </tr>
             </c:forEach>
+            </tbody>
+        </table>
 
-
-            <nav aria-label="Page navigation example">
+            <nav aria-label="Page navigation example" class="center-screen">
                 <ul class="pagination">
-                    <li class="page-item"><a class="page-link" href="listBookToBuy?page=${page == 0 ? page : page - 1}&bookName=${bookName}&categoryName=${categoryName}&minPrice=${minPrice}&maxPrice=${maxPrice}">Previous</a></li>
+                    <li class="page-item"><a class="page-link" href="ListBookToBuy?page=${page == 0 ? page : page - 1}&bookName=${bookName}&categoryName=${categoryName}&minPrice=${minPrice}&maxPrice=${maxPrice}">Previous</a></li>
                         <c:forEach begin="0" end="${paging}" step="1" varStatus="loop">
-                        <li class="page-item ${page == (loop.count -1 )? "active" : ""}"><a class="page-link" href="listBookToBuy?page=${loop.count - 1}&bookName=${bookName}&categoryName=${categoryName}&minPrice=${minPrice}&maxPrice=${maxPrice}">${loop.count}</a></li>
+                        <li class="page-item ${page == (loop.count -1 )? "active" : ""}"><a class="page-link" href="ListBookToBuy?page=${loop.count - 1}&bookName=${bookName}&categoryName=${categoryName}&minPrice=${minPrice}&maxPrice=${maxPrice}">${loop.count}</a></li>
                         </c:forEach>
 
-                    <li class="page-item"><a class="page-link" href="listBookToBuy?page=${page == paging ? page : page + 1}&bookName=${bookName}&categoryName=${categoryName}&minPrice=${minPrice}&maxPrice=${maxPrice}">Next</a></li>
+                    <li class="page-item"><a class="page-link" href="ListBookToBuy?page=${page == paging ? page : page + 1}&bookName=${bookName}&categoryName=${categoryName}&minPrice=${minPrice}&maxPrice=${maxPrice}">Next</a></li>
 
                 </ul>
 

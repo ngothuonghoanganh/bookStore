@@ -10,7 +10,6 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
 
 /**
  *
@@ -30,8 +29,10 @@ public class discountDTO {
 
     @XmlElement(name = "id")
     private int id;
-    @XmlElement(name = "code")
-    private String code;
+    @XmlElement(name = "discountPrice")
+    private String discountPrice;
+    @XmlElement(name = "discountCode")
+    private String discountCode;
     @XmlElement(name = "startDate")
     private Date startDate;
     @XmlElement(name = "endDate")
@@ -44,9 +45,10 @@ public class discountDTO {
     public discountDTO() {
     }
 
-    public discountDTO(int id, String code, Date startDate, Date endDate, float percent, String status) {
+    public discountDTO(int id, String discountPrice, String discountCode, Date startDate, Date endDate, float percent, String status) {
         this.id = id;
-        this.code = code;
+        this.discountPrice = discountPrice;
+        this.discountCode = discountCode;
         this.startDate = startDate;
         this.endDate = endDate;
         this.percent = percent;
@@ -59,14 +61,6 @@ public class discountDTO {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
     }
 
     public Date getStartDate() {
@@ -101,4 +95,21 @@ public class discountDTO {
         this.status = status;
     }
 
+    public String getDiscountPrice() {
+        return discountPrice;
+    }
+
+    public void setDiscountPrice(String discountPrice) {
+        this.discountPrice = discountPrice;
+    }
+
+    public String getDiscountCode() {
+        return discountCode;
+    }
+
+    public void setDiscountCode(String discountCode) {
+        this.discountCode = discountCode;
+    }
+
+    
 }

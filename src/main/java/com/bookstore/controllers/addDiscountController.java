@@ -40,7 +40,7 @@ public class addDiscountController extends HttpServlet {
             discountDAO discountDAO = new discountDAO();
             discountDTO discount = discountDAO.getOneDiscount(discountCode);
 
-            if (discount.getCode() == null) {
+            if (discount.getDiscountCode()== null) {
                 error = "This discount is not exist";
             }
             

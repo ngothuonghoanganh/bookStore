@@ -43,6 +43,15 @@
                 pointer-events: none;
                 color: #aaa;
             }
+            .center-screen {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+            }
+            .max-width-40px{
+                max-width: 40px;
+            }
         </style>
     </head>
     <body>
@@ -257,30 +266,35 @@
 
 
             <div style="height: 10px"></div>
-            <div class="row border">
-                <div class="col border" style="min-width: 110px;">Name</div>
-                <div class="col border" style="min-width: 110px;">Title</div>
-                <div class="col border" style="min-width: 110px;">Author</div>
-                <!--<div class="col border" style="min-width: 110px;">Import Date</div>-->
-                <div class="col border" style="min-width: 110px;">Quantity</div>
-                <div class="col border" style="min-width: 110px;">Category</div>    
-                <div class="col border" style="min-width: 110px;">Price</div>          
-                <div class="col border" style="min-width: 110px;">Description</div>
-                <div class="col border" style="min-width: 110px;"></div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th  scope="col" class="max-width-40px" >No</th>
+                        <th  scope="col">Name</th>
+                 <th  scope="col">Title</th>
+                 <th  scope="col">Author</th>
+                <!-- <th  scope="col">Import Date</div>-->
+                 <th  scope="col">Quantity</th>
+                 <th  scope="col">Category</th>    
+                 <th  scope="col">Price</th>          
+                 <th  scope="col">Description</th>
+                 <th  scope="col"></th>
 
-                <div class=""></div>
-
-            </div>
+                 <th  scope="col"></th>
+                 <thead>
+                 <tbody>
+            </tr>
             <c:forEach var="books" items="${books}">
-                <div class="row border">
-                    <div class="col border" style="min-width: 110px;">${books.name}</div>
-                    <div class="col border" style="min-width: 110px;">${books.title}</div>
-                    <div class="col border" style="min-width: 110px;">${books.author}</div>
-                    <div class="col border" style="min-width: 110px;">${books.quantity}</div>
-                    <div class="col border" style="min-width: 110px;">${books.categoryName}</div>
-                    <div class="col border" style="min-width: 110px;">${books.price}$</div>  
-                    <div class="col border" style="min-width: 110px;">${books.description}</div>
-                    <div class="col border" style="min-width: 110px;">
+                <tr>
+                    <td class="max-width-40px" >${status.index + 1}</td>
+                     <td  scope="col">${books.name}</td>
+                     <td  scope="col">${books.title}</td>
+                     <td  scope="col">${books.author}</td>
+                     <td  scope="col">${books.quantity}</td>
+                     <td  scope="col">${books.categoryName}</td>
+                     <td  scope="col">${books.price}$</td>  
+                     <td  scope="col">${books.description}</td>
+                     <td  scope="col">
                         <button type="button" class="btn btn-primary" style="width: 80px; margin: auto" data-toggle="modal" data-target="#model${books.id}">
                             Update
                         </button>
@@ -290,10 +304,9 @@
                             Delete
                         </button>
 
-                    </div>
-                    <div class=""></div>
-                </div>
-
+                    </td>
+                    <td  scope="col"></td>
+                
                 <script>
                     $('#model${books.id}').on('shown.bs.modal');
                     $('#modelD${books.id}').on('shown.bs.modal');
@@ -461,23 +474,26 @@
                     </div>
                 </div>
             </c:forEach>
+        </tr>
+    </tbody>
+</table>
+
+            
+
+        
+        <nav aria-label="Page navigation example" class="center-screen">
+            <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="Book?page=${page == 0 ? page : page - 1}&bookName=${bookName}&categoryName=${categoryName}&minPrice=${minPrice}&maxPrice=${maxPrice}">Previous</a></li>
+                    <c:forEach begin="0" end="${paging}" step="1" varStatus="loop">
+                    <li class="page-item ${page == (loop.count -1 )? "active" : ""}"><a class="page-link" href="Book?page=${loop.count - 1}&bookName=${bookName}&categoryName=${categoryName}&minPrice=${minPrice}&maxPrice=${maxPrice}">${loop.count}</a></li>
+                    </c:forEach>
+
+                <li class="page-item"><a class="page-link" href="Book?page=${page == paging ? page : page + 1}&bookName=${bookName}&categoryName=${categoryName}&minPrice=${minPrice}&maxPrice=${maxPrice}">Next</a></li>
+
+            </ul>
 
 
-            <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                    <li class="page-item"><a class="page-link" href="Book?page=${page == 0 ? page : page - 1}&bookName=${bookName}&categoryName=${categoryName}&minPrice=${minPrice}&maxPrice=${maxPrice}">Previous</a></li>
-                        <c:forEach begin="0" end="${paging}" step="1" varStatus="loop">
-                        <li class="page-item ${page == (loop.count -1 )? "active" : ""}"><a class="page-link" href="Book?page=${loop.count - 1}&bookName=${bookName}&categoryName=${categoryName}&minPrice=${minPrice}&maxPrice=${maxPrice}">${loop.count}</a></li>
-                        </c:forEach>
-
-                    <li class="page-item"><a class="page-link" href="Book?page=${page == paging ? page : page + 1}&bookName=${bookName}&categoryName=${categoryName}&minPrice=${minPrice}&maxPrice=${maxPrice}">Next</a></li>
-
-                </ul>
-
-
-            </nav>
-
-        </div>
-
+        </nav>
+    </div>
     </body>
 </html>

@@ -35,6 +35,7 @@
         </style>
     </head>
     <body>
+        <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="Home">Book Store</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -133,7 +134,7 @@
 <br/>
 <form action="AddDiscount" method="POST">
     <div class="main">
-        <div class="input-group" style="width: 20%">
+        <div class="input-group" style="width: 40%">
             <input name="discountCode" type="text" class="form-control" placeholder="Discount Code" value="${discount.code}">
             <div class="input-group-append">
                 <button type="submit" class="btn btn-secondary" type="button">
@@ -218,6 +219,6 @@
         </div>
     </form>
 </div>
-
+</div>
 </body>
 </html>

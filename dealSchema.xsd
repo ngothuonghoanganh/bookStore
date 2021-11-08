@@ -40,6 +40,10 @@ and open the template in the editor.
                 <xs:element ref="dealDetail" maxOccurs="unbounded"></xs:element>
             </xs:sequence>
         </xs:complexType>
+        <xs:unique name="dealDetailId">
+            <xs:selector xpath="./dealDetail/id" />
+            <xs:field xpath="." />
+        </xs:unique>
     </xs:element>
 
     <xs:element name="deals">
@@ -48,5 +52,9 @@ and open the template in the editor.
                 <xs:element ref="deal" maxOccurs="unbounded"></xs:element>
             </xs:sequence>
         </xs:complexType>
+        <xs:unique name="dealId">
+            <xs:selector xpath="./deal/id" />
+            <xs:field xpath="." />
+        </xs:unique>
     </xs:element>
 </xs:schema>

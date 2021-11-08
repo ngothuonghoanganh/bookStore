@@ -1,11 +1,10 @@
-<dealDetails xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" 
-xs:noNamespaceSchemaLocation="dealDetailSchema.xsd">	
-    <dealDetail>
-        <id>1</id>
-	<dealId>1</dealId>
-	<bookId>1</bookId>
-	<bookName>hoa vang tren co xanh</bookName>
-	<quantity>1</quantity>
-	<price>120000</price>
-    </dealDetail>  
+<dealDetails xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="dealDetailSchema.xsd">
+	<dealDetail>
+		<id>1</id>
+		<dealId>1</dealId>
+		<bookId>1</bookId>
+		<bookName>hoa vang tren co xanh</bookName>
+		<quantity>1</quantity>
+		<price>120000</price>
+	</dealDetail>
 </dealDetails>

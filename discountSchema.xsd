@@ -28,5 +28,9 @@ and open the template in the editor.
                 <xs:element ref="discount" maxOccurs="unbounded"></xs:element>
             </xs:sequence>
         </xs:complexType>
+        <xs:unique name="discountId">
+            <xs:selector xpath="./discount/id" />
+            <xs:field xpath="." />
+        </xs:unique>
     </xs:element>
 </xs:schema>

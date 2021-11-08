@@ -6,7 +6,7 @@ xs:noNamespaceSchemaLocation="CategoriesSchema.xsd">
         <categoryName>sach chill</categoryName>
     </category>
     <category>
-        <id>1</id>
+        <id>2</id>
         <categoryName>sach giai tri</categoryName>
     </category>
     <category>

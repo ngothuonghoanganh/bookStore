@@ -27,6 +27,10 @@ and open the template in the editor.
                 <xs:element ref="category" maxOccurs="unbounded"></xs:element>
             </xs:sequence>
         </xs:complexType>
+        <xs:unique name="categoryId">
+            <xs:selector xpath="./category/id" />
+            <xs:field xpath="." />
+        </xs:unique>
     </xs:element>
 
     <xs:simpleType name="notEmpty">

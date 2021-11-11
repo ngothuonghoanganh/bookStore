@@ -31,6 +31,11 @@ public class roleDTO {
     public roleDTO() {
     }
 
+    public roleDTO(int id, String roleName) {
+        this.id = id;
+        this.roleName = roleName;
+    }
+
     public roleDTO(String roleName) {
         this.roleName = roleName;
     }

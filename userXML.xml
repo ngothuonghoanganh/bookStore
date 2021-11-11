@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<users xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" 
-xs:noNamespaceSchemaLocation="userSchema.xsd">
+<users>
     <user>
         <id>1</id>
         <username>nguyena</username>
@@ -26,9 +25,13 @@ xs:noNamespaceSchemaLocation="userSchema.xsd">
         </role>
     </user>
     <user>
-        <id>3</id>
-        <username>a</username>
-        <password>a</password>
-        <fullName>a</fullName>
+        <id>4</id>
+        <username>Hoang</username>
+        <password>123</password>
+        <fullName>ngo thuong hoang anh</fullName>
+        <role>
+            <id>1</id>
+            <roleName>user</roleName>
+        </role>
     </user>
 </users>
